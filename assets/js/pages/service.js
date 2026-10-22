@@ -2,7 +2,8 @@
    TBM/PTK/TK xác nhận tham gia, so sánh với định mức nhiệm vụ khác (NV3), tổng hợp toàn Khoa. */
 App.addI18n({
   vi: {
-    'sv.sub': 'Ghi nhận giờ tham gia tư vấn tuyển sinh, hoạt động Khoa và Công đoàn; đăng ký sự kiện, xác nhận bởi Trưởng Bộ môn/Lãnh đạo Khoa.',
+    'sv.sub': 'Giờ tham gia hoạt động phục vụ cộng đồng và đăng ký sự kiện sắp tới.',
+    'sv.detail': 'Chi tiết', 'sv.d.h': 'Giờ phục vụ và định mức nhiệm vụ khác',
     'sv.year': 'Năm học', 'sv.cat.tuyen_sinh': 'Tư vấn tuyển sinh', 'sv.cat.khoa': 'Hoạt động Khoa', 'sv.cat.cong_doan': 'Hoạt động Công đoàn',
     'sv.tab.confirm': 'Xác nhận tham gia', 'sv.tab.fac': 'Tổng hợp Khoa',
     'sv.k.conf': 'Giờ đã xác nhận', 'sv.k.pend': 'Giờ chờ xác nhận', 'sv.k.reg': 'Sự kiện đã đăng ký', 'sv.k.norm': 'Định mức nhiệm vụ khác (NV3)',
@@ -10,10 +11,10 @@ App.addI18n({
     'sv.norm.h': 'Giờ phục vụ so với định mức nhiệm vụ khác', 'sv.norm.txt': 'Định mức NV3 = 1.760 − 3 × giờ giảng − 3 × giờ NCKH. Hoạt động phục vụ cộng đồng là một phần của NV3 (cùng sinh hoạt chuyên môn, bồi dưỡng, công tác đoàn thể…).',
     'sv.norm.conv': 'Quy đổi: 1 giờ chuẩn giảng dạy = 3 giờ hành chính.', 'sv.norm.ktv': 'KTV làm việc theo chế độ hành chính 1.760 giờ/năm; giờ phục vụ được ghi nhận như minh chứng hoạt động.',
     'sv.norm.union': 'Giảm định mức NV3 do kiêm nhiệm công đoàn: {h} giờ hành chính',
-    'sv.mine': 'Hoạt động của tôi – {c}', 'sv.c.date': 'Ngày', 'sv.c.name': 'Hoạt động', 'sv.c.hours': 'Giờ (hành chính)', 'sv.c.st': 'Xác nhận', 'sv.c.who': 'Cán bộ',
-    'sv.c.place': 'Địa điểm', 'sv.c.role': 'Vai trò', 'sv.c.slots': 'Chỉ tiêu', 'sv.c.reg': 'Đã đăng ký',
-    'sv.s.ok': 'Đã xác nhận', 'sv.s.wait': 'Chờ xác nhận', 'sv.s.no': 'Từ chối', 'sv.s.regd': 'Đã đăng ký – chờ duyệt',
-    'sv.up': 'Sự kiện sắp tới – đăng ký tham gia', 'sv.up.none': 'Chưa có sự kiện sắp tới.', 'sv.reg': 'Đăng ký', 'sv.reg.h': 'Đăng ký tham gia sự kiện',
+    'sv.mine': 'Hoạt động của tôi', 'sv.c.date': 'Ngày', 'sv.c.name': 'Hoạt động', 'sv.c.hours': 'Giờ', 'sv.c.st': 'Trạng thái', 'sv.c.who': 'Cán bộ',
+    'sv.c.place': 'Địa điểm', 'sv.c.role': 'Vai trò', 'sv.c.slots': 'Chỉ tiêu', 'sv.c.reg': 'Số chỗ',
+    'sv.s.ok': 'Đã xác nhận', 'sv.s.wait': 'Chờ xác nhận', 'sv.s.no': 'Từ chối', 'sv.s.regd': 'Đã đăng ký',
+    'sv.up': 'Sự kiện sắp tới', 'sv.up.none': 'Chưa có sự kiện sắp tới.', 'sv.reg': 'Đăng ký', 'sv.reg.h': 'Đăng ký tham gia sự kiện',
     'sv.reg.role': 'Vai trò tham gia', 'sv.reg.note': 'Ghi chú (khung giờ có thể tham gia…)', 'sv.reg.ok': 'Đã đăng ký – chờ Trưởng Bộ môn/Lãnh đạo Khoa xác nhận.',
     'sv.reg.cancel': 'Huỷ đăng ký', 'sv.reg.cancelled': 'Đã huỷ đăng ký.', 'sv.reg.full': 'Đã đủ chỉ tiêu',
     'sv.r.tvv': 'Tư vấn viên / báo cáo viên', 'sv.r.tc': 'Hỗ trợ tổ chức', 'sv.r.td': 'Tham dự', 'sv.r.gk': 'Giám khảo / phản biện',
@@ -27,7 +28,8 @@ App.addI18n({
     'sv.st.ban_hanh': 'Ban hành', 'sv.st.du_thao': 'Dự thảo', 'sv.st.gia_dinh': 'Giả định', 'sv.st.suy_ra': 'Suy ra', 'sv.nofeat': 'Vai trò này không có chức năng phục vụ cộng đồng.',
   },
   en: {
-    'sv.sub': 'Hours spent on admissions counselling, faculty activities and trade-union activities; event sign-up and confirmation by the Head of Department / Faculty leaders.',
+    'sv.sub': 'Your community service hours and sign-up for upcoming events.',
+    'sv.detail': 'Details', 'sv.d.h': 'Service hours and the other-duties quota',
     'sv.year': 'Academic year', 'sv.cat.tuyen_sinh': 'Admissions counselling', 'sv.cat.khoa': 'Faculty activities', 'sv.cat.cong_doan': 'Trade union activities',
     'sv.tab.confirm': 'Confirm participation', 'sv.tab.fac': 'Faculty summary',
     'sv.k.conf': 'Confirmed hours', 'sv.k.pend': 'Hours pending', 'sv.k.reg': 'Events registered', 'sv.k.norm': 'Other-duties quota (NV3)',
@@ -35,10 +37,10 @@ App.addI18n({
     'sv.norm.h': 'Service hours vs the other-duties quota', 'sv.norm.txt': 'NV3 quota = 1,760 − 3 × teaching hours − 3 × research hours. Community service is part of NV3 (together with academic meetings, training, union work…).',
     'sv.norm.conv': 'Conversion: 1 standard teaching hour = 3 office hours.', 'sv.norm.ktv': 'Technicians work 1,760 office hours/year; service hours are recorded as evidence of activity.',
     'sv.norm.union': 'NV3 reduction for trade-union position: {h} office hours',
-    'sv.mine': 'My activities – {c}', 'sv.c.date': 'Date', 'sv.c.name': 'Activity', 'sv.c.hours': 'Hours (office)', 'sv.c.st': 'Confirmation', 'sv.c.who': 'Staff',
-    'sv.c.place': 'Venue', 'sv.c.role': 'Role', 'sv.c.slots': 'Slots', 'sv.c.reg': 'Registered',
-    'sv.s.ok': 'Confirmed', 'sv.s.wait': 'Pending', 'sv.s.no': 'Rejected', 'sv.s.regd': 'Registered – awaiting approval',
-    'sv.up': 'Upcoming events – sign up', 'sv.up.none': 'No upcoming events.', 'sv.reg': 'Sign up', 'sv.reg.h': 'Sign up for an event',
+    'sv.mine': 'My activities', 'sv.c.date': 'Date', 'sv.c.name': 'Activity', 'sv.c.hours': 'Hours', 'sv.c.st': 'Status', 'sv.c.who': 'Staff',
+    'sv.c.place': 'Venue', 'sv.c.role': 'Role', 'sv.c.slots': 'Slots', 'sv.c.reg': 'Places',
+    'sv.s.ok': 'Confirmed', 'sv.s.wait': 'Pending', 'sv.s.no': 'Rejected', 'sv.s.regd': 'Registered',
+    'sv.up': 'Upcoming events', 'sv.up.none': 'No upcoming events.', 'sv.reg': 'Sign up', 'sv.reg.h': 'Sign up for an event',
     'sv.reg.role': 'Participation role', 'sv.reg.note': 'Note (available time slots…)', 'sv.reg.ok': 'Registered – awaiting confirmation by the Head of Department / Faculty leaders.',
     'sv.reg.cancel': 'Cancel sign-up', 'sv.reg.cancelled': 'Sign-up cancelled.', 'sv.reg.full': 'Full',
     'sv.r.tvv': 'Counsellor / speaker', 'sv.r.tc': 'Organising support', 'sv.r.td': 'Attendee', 'sv.r.gk': 'Judge / reviewer',
@@ -125,12 +127,14 @@ App.addI18n({
     const quota = Math.max(1, n.other - (ur ? ur.nv3_reduce_admin_hours : 0));
     const pct = ok / quota * 100;
     const conv = (T.unit_conversion || []).find((x) => x.key === 'teach_hour_to_admin') || {};
-    el.innerHTML = `<div class="kpis">${App.ui.kpi(t('sv.k.conf'), n1(ok), t('sv.k.std', { h: n1(ok / 3) }), 'ok')}${App.ui.kpi(t('sv.k.pend'), n1(wait), '', wait ? 'warn' : '')}
-        ${App.ui.kpi(t('sv.k.reg'), nreg, '', 'cyan')}${App.ui.kpi(t('sv.k.norm'), App.fmtNum(quota, 0) + ' <small style="font-size:.9rem">' + t('sv.hadm') + '</small>', App.ui.progress(pct, 'cyan') + t('sv.k.share', { p: App.fmtNum(pct, 1) }))}</div>
-      <div class="card"><div class="card-h"><h3>${t('sv.norm.h')} – ${esc(yl(S.year))}</h3>${stBadge('suy_ra')}</div>
-        <div class="small">${isKTV ? t('sv.norm.ktv') : t('sv.norm.txt')}</div>${src(isKTV ? 'TT20 Điều 3.1' : 'TT20 Điều 3.1; QD1155 Điều 6.3; DT_CDLV2026 Điều 7.a (suy ra)', isKTV ? 'gia_dinh' : 'suy_ra')}
-        <div class="small" style="margin-top:4px">${t('sv.norm.conv')}</div>${src(conv.source, conv.status)}
-        ${ur ? `<div class="small" style="margin-top:4px">${t('sv.norm.union', { h: ur.nv3_reduce_admin_hours })}</div>${src(ur.source, ur.status)}` : ''}</div>`;
+    el.innerHTML = `<div class="kpis">${App.ui.kpi(t('sv.k.conf'), n1(ok), `<button class="linkbtn small" data-sdet>${t('sv.detail')}</button>`, 'ok')}
+        ${App.ui.kpi(t('sv.k.pend'), n1(wait), '', wait ? 'warn' : '')}${App.ui.kpi(t('sv.k.reg'), nreg, '', 'cyan')}</div>`;
+    el.querySelector('[data-sdet]').onclick = () => App.ui.modal(`<h3>${t('sv.d.h')} – ${esc(yl(S.year))}</h3>
+      <div class="fields" style="grid-template-columns:1fr 1fr;margin-bottom:10px"><div class="fld"><div class="k">${t('sv.k.conf')}</div><div class="v">${n1(ok)} ${t('sv.hadm')}</div><div class="small muted">${t('sv.k.std', { h: n1(ok / 3) })}</div></div>
+        <div class="fld"><div class="k">${t('sv.k.norm')}</div><div class="v">${App.fmtNum(quota, 0)} ${t('sv.hadm')}</div>${App.ui.progress(pct, 'cyan')}<div class="small muted">${t('sv.k.share', { p: App.fmtNum(pct, 1) })}</div></div></div>
+      <div class="small">${isKTV ? t('sv.norm.ktv') : t('sv.norm.txt')}</div>${src(isKTV ? 'TT20 Điều 3.1' : 'TT20 Điều 3.1; QD1155 Điều 6.3; DT_CDLV2026 Điều 7.a (suy ra)', isKTV ? 'gia_dinh' : 'suy_ra')}
+      <div class="small" style="margin-top:4px">${t('sv.norm.conv')}</div>${src(conv.source, conv.status)}
+      ${ur ? `<div class="small" style="margin-top:4px">${t('sv.norm.union', { h: ur.nv3_reduce_admin_hours })}</div>${src(ur.source, ur.status)}` : ''}`);
   }
 
   /* --- từng loại hoạt động --- */
@@ -139,14 +143,14 @@ App.addI18n({
     const myRegs = regs().filter((r) => r.ma_cb === u.ma_cb && r.status !== 'huy');
     const evs = EVENTS.filter((e) => e.loai === cat);
     const count = (id) => regs().filter((r) => r.ev === id && r.status !== 'huy' && r.status !== 'no').length;
-    el.innerHTML = `<div class="grid g-1-2"><div class="card"><div class="card-h"><h3>${t('sv.mine', { c: t('sv.cat.' + cat) })}</h3><span class="chip">${n1(mine.filter((a) => a.st === 'ok').reduce((s, a) => s + a.gio, 0))} h</span></div>
-        ${App.ui.table([{ t: t('sv.c.date'), f: (a) => App.fmtDate(a.ngay) }, { t: t('sv.c.name'), f: (a) => esc(actName(a)) + (a.reg ? `<div class="small muted">${esc(t('sv.r.' + a.reg.vai_tro))}</div>` : '') },
-          { t: t('sv.c.hours'), k: 'gio', cls: 'num' }, { t: t('sv.c.st'), f: (a) => stB(a.st) }], mine, { empty: t('sv.none') })}</div>
-      <div class="card"><h3>${t('sv.up')}</h3>${evs.length ? App.ui.table([
-          { t: t('sv.c.date'), f: (e) => App.fmtDate(e.ngay) }, { t: t('sv.c.name'), f: (e) => `<b>${esc(App.L(e))}</b><div class="small muted">${esc(App.L(e, 'p'))}</div>` },
+    el.innerHTML = `<div class="grid g2"><div class="card"><h3>${t('sv.up')}</h3>${evs.length ? App.ui.table([
+          { t: t('sv.c.name'), f: (e) => `<b>${esc(App.L(e))}</b><div class="small muted">${App.fmtDate(e.ngay)} · ${esc(App.L(e, 'p'))}</div>` },
           { t: t('sv.c.hours'), k: 'gio', cls: 'num' }, { t: t('sv.c.reg'), f: (e) => count(e.id) + '/' + e.slots, cls: 'num' },
-          { t: t('action'), f: (e) => { const r = myRegs.find((x) => x.ev === e.id); return r ? stB(r.status === 'ok' ? 'ok' : r.status === 'no' ? 'no' : 'reg') + (r.status === 'cho' ? ` <button class="linkbtn small" data-cancel="${r.id}">${t('sv.reg.cancel')}</button>` : '')
-            : count(e.id) >= e.slots ? App.ui.badge(t('sv.reg.full'), '') : `<button class="btn sm" data-reg="${e.id}">${t('sv.reg')}</button>`; } }], evs) : App.ui.empty(t('sv.up.none'))}</div></div>`;
+          { t: '', f: (e) => { const r = myRegs.find((x) => x.ev === e.id); return r ? stB(r.status === 'ok' ? 'ok' : r.status === 'no' ? 'no' : 'reg') + (r.status === 'cho' ? `<div><button class="linkbtn small" data-cancel="${r.id}">${t('sv.reg.cancel')}</button></div>` : '')
+            : count(e.id) >= e.slots ? App.ui.badge(t('sv.reg.full'), '') : `<button class="btn sm" data-reg="${e.id}">${t('sv.reg')}</button>`; } }], evs) : App.ui.empty(t('sv.up.none'))}</div>
+      <div class="card"><div class="card-h"><h3>${t('sv.mine')}</h3><span class="chip">${n1(mine.filter((a) => a.st === 'ok').reduce((s, a) => s + a.gio, 0))} h</span></div>
+        ${App.ui.table([{ t: t('sv.c.name'), f: (a) => esc(actName(a)) }, { t: t('sv.c.date'), f: (a) => App.fmtDate(a.ngay) },
+          { t: t('sv.c.hours'), k: 'gio', cls: 'num' }, { t: t('sv.c.st'), f: (a) => stB(a.st) }], mine, { empty: t('sv.none') })}</div></div>`;
     el.querySelectorAll('[data-reg]').forEach((b) => (b.onclick = () => register(u, EVENTS.find((e) => e.id === b.dataset.reg), rerender)));
     el.querySelectorAll('[data-cancel]').forEach((b) => (b.onclick = () => {
       const all = regs(); const r = all.find((x) => x.id === b.dataset.cancel); if (!r) return; r.status = 'huy'; App.store.patch('sv.reg', all);

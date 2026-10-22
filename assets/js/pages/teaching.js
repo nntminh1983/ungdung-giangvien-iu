@@ -2,11 +2,13 @@
    theo TT 21/2025 (ẩn sau MFA), đối soát cuối năm (QT-ĐHQT-GD-04), bảng quản lý Bộ môn/Khoa, khối lượng hỗ trợ của Trợ giảng/KTV. */
 App.addI18n({
   vi: {
-    'tc.sub': 'Giờ chuẩn quy đổi từ thời khoá biểu, hướng dẫn luận văn/đồ án; định mức theo học hàm, học vị và chức vụ kiêm nhiệm.',
+    'tc.sub': 'Số giờ giảng dạy trong năm học và mức hoàn thành định mức.',
     'tc.year': 'Năm học', 'tc.term': 'Học kỳ', 'tc.term.all': 'Cả năm', 'tc.term.1': 'HK1', 'tc.term.2': 'HK2', 'tc.term.3': 'HK hè',
-    'tc.y.closed': 'đã kết thúc', 'tc.y.open': 'đang diễn ra', 'tc.inprog': 'Năm học {y} đang diễn ra – số liệu tạm tính theo thời khoá biểu đã xếp (HK1), chưa dùng để đối soát.',
+    'tc.y.closed': 'đã kết thúc', 'tc.y.open': 'đang diễn ra', 'tc.inprog': 'Năm học {y} đang diễn ra – số liệu tạm tính.',
     'tc.tab.me': 'Cá nhân', 'tc.tab.dept': 'Bộ môn', 'tc.tab.fac': 'Toàn Khoa', 'tc.tab.school': 'Toàn Trường',
-    'tc.k.total': 'Tổng giờ chuẩn', 'tc.k.quota': 'Định mức phải thực hiện', 'tc.k.pct': 'Mức hoàn thành', 'tc.k.ot': 'Giờ vượt định mức',
+    'tc.k.total': 'Tổng giờ chuẩn', 'tc.k.quota': 'Định mức', 'tc.k.pct': 'Hoàn thành', 'tc.k.ot': 'Giờ vượt định mức',
+    'tc.k.diff': 'Giờ vượt / thiếu', 'tc.k.over': 'giờ vượt định mức', 'tc.k.short': 'giờ còn thiếu', 'tc.c.nst': 'Số SV',
+    'tc.detail': 'Chi tiết cách tính', 'tc.d.norm': 'Định mức', 'tc.d.formula': 'Công thức', 'tc.d.coef': 'Hệ số từng lớp', 'tc.d.ot': 'Tiền vượt giờ', 'tc.d.info': 'Cách ghi nhận',
     'tc.k.ugpg': 'ĐH {a} · SĐH {b}', 'tc.k.otcap': 'tối đa 200 tiết/năm (TT 21/2025)', 'tc.k.base': 'chuẩn {b} × {p}%',
     'tc.ug': 'Đại học', 'tc.pg': 'Sau đại học', 'tc.secs': 'Lớp học phần', 'tc.sups': 'Hướng dẫn luận văn, đồ án, thực tập',
     'tc.c.code': 'Mã HP', 'tc.c.name': 'Học phần', 'tc.c.term': 'HK', 'tc.c.type': 'Loại', 'tc.c.cr': 'TC', 'tc.c.size': 'Sĩ số', 'tc.c.grp': 'Nhóm',
@@ -15,7 +17,8 @@ App.addI18n({
     'tc.sup.KLTN': 'Khoá luận tốt nghiệp ĐH', 'tc.sup.DA': 'Đồ án ĐH', 'tc.sup.TT': 'Thực tập/bài tập lớn', 'tc.sup.LVThS': 'Luận văn thạc sĩ',
     'tc.role.main': 'HD chính', 'tc.role.co': 'HD phụ (chia đôi)',
     'tc.pg.nofeat': 'Vai trò đang hoạt động không có chức năng "Khối lượng giảng dạy – Sau đại học".',
-    'tc.pg.ths': 'Giảng viên có học vị Thạc sĩ không có khối lượng giảng dạy sau đại học: không được giảng lý thuyết CTĐT thạc sĩ (trừ ngoại ngữ không chuyên, Triết học, hướng dẫn thực hành/thực tập), không được là người hướng dẫn chính luận văn ThS, chỉ được đồng hướng dẫn tối đa 2 học viên CTĐT ứng dụng.',
+    'tc.pg.ths': 'Giảng viên có học vị Thạc sĩ không có khối lượng giảng dạy sau đại học.',
+    'tc.pg.thsd': 'Giảng viên có học vị Thạc sĩ không được giảng lý thuyết CTĐT thạc sĩ (trừ ngoại ngữ không chuyên, Triết học, hướng dẫn thực hành/thực tập), không được là người hướng dẫn chính luận văn ThS, chỉ được đồng hướng dẫn tối đa 2 học viên CTĐT ứng dụng.',
     'tc.norm': 'Định mức năm học', 'tc.n.title': 'Chức danh tính định mức', 'tc.n.base': 'Định mức giờ chuẩn giảng dạy', 'tc.n.red': 'Giảm định mức do chức vụ',
     'tc.n.nored': 'Không giữ chức vụ được giảm định mức', 'tc.n.min': 'dạy tối thiểu {p}%', 'tc.n.multi': 'Kiêm nhiều chức vụ: áp dụng mức định mức thấp nhất.',
     'tc.n.quota': 'Định mức phải thực hiện', 'tc.n.res': 'Định mức NCKH', 'tc.n.other': 'Nhiệm vụ khác (NV3)', 'tc.n.year': 'Quỹ thời gian năm học',
@@ -36,15 +39,15 @@ App.addI18n({
     'tc.ot.note': 'Phần vượt giờ chỉ được thanh toán sau khi khấu trừ phần chưa hoàn thành NCKH/nhiệm vụ khác (QĐ 593 Điều 15.5.a); nhiệm vụ đã nhận thù lao từ nguồn khác không được quy đổi (TT 21 Điều 3.5). Chi trả sau khi kết thúc năm học.',
     'tc.ot.none': 'Không có giờ vượt định mức trong năm học này.', 'tc.ot.reason': 'Xem ước tính tiền dạy thêm giờ (dữ liệu lương)', 'tc.ot.prov': 'tạm tính',
     'tc.ot.ocr': 'Công thức TT 21 Điều 5.1.b được dựng lại từ bản OCR – cần đối chiếu bản gốc.',
-    'tc.rec': 'Đối soát cuối năm', 'tc.rec.btn': 'Xác nhận đối soát cuối năm', 'tc.rec.desc': 'Xác nhận bảng khối lượng năm học {y} theo quy trình QT-ĐHQT-GD-04 (cửa sổ 5 ngày làm việc; có thể khiếu nại từng dòng kèm minh chứng).',
+    'tc.rec': 'Đối soát cuối năm', 'tc.rec.btn': 'Xác nhận đối soát cuối năm', 'tc.rec.desc': 'Kiểm tra và xác nhận bảng khối lượng năm học {y}.',
     'tc.rec.notyet': 'Năm học chưa kết thúc – đối soát mở vào tháng 9 (QĐ 593 Điều 19: tổng kết vượt/thiếu định mức tháng 9, truy lĩnh/truy thu từ tháng 10).',
     'tc.rec.done': 'Đã gửi hồ sơ {id}', 'tc.rec.step': 'Bước hiện tại: {s}', 'tc.rec.open': 'Mở hồ sơ', 'tc.rec.dispute': 'Khiếu nại/ghi chú (nếu có)',
     'tc.rec.consent': 'Tôi đã kiểm tra và xác nhận bảng khối lượng nêu trên.', 'tc.rec.need': 'Vui lòng đánh dấu xác nhận.', 'tc.rec.mfa': 'Xác nhận đối soát khối lượng năm học {y}',
     'tc.rec.ok': 'Đã gửi xác nhận đối soát – TBM/Trưởng Khoa sẽ duyệt.', 'tc.rec.local': 'Lưu cục bộ (chưa kết nối mô-đun quy trình).', 'tc.rec.roles': 'Chức vụ kiêm nhiệm',
     'tc.rs.nhap': 'Nháp', 'tc.rs.dang_xu_ly': 'Đang xử lý', 'tc.rs.tra_lai': 'Trả lại', 'tc.rs.hoan_thanh': 'Hoàn thành', 'tc.rs.huy': 'Đã huỷ',
     'tc.m.h': 'Khối lượng giảng dạy – {s}', 'tc.m.n': 'Giảng viên', 'tc.m.met': 'Đạt định mức', 'tc.m.under': 'Dưới 80% định mức', 'tc.m.ot': 'Tổng giờ vượt',
-    'tc.m.chart': 'Giờ chuẩn so với định mức (vạch đỏ = định mức)', 'tc.m.dept': 'Bộ môn', 'tc.m.alld': 'Tất cả bộ môn', 'tc.m.title': 'Định mức',
-    'tc.m.ok': 'Đạt', 'tc.m.near': 'Gần đạt', 'tc.m.low': 'Thiếu giờ', 'tc.m.over': 'Vượt trần 200', 'tc.m.click': 'Bấm vào một dòng để xem chi tiết (thao tác được ghi nhật ký).',
+    'tc.m.chart': 'Giờ chuẩn so với định mức', 'tc.m.dept': 'Bộ môn', 'tc.m.alld': 'Tất cả bộ môn', 'tc.m.title': 'Mã định mức',
+    'tc.m.ok': 'Đạt', 'tc.m.near': 'Gần đạt', 'tc.m.low': 'Thiếu giờ', 'tc.m.over': 'Vượt trần 200', 'tc.m.click': 'Bấm vào dòng để xem chi tiết.',
     'tc.m.csv': 'Xuất bảng khối lượng đơn vị (dữ liệu cá nhân)', 'tc.m.exported': 'Đã xuất CSV và ghi nhật ký.', 'tc.m.detail': 'Chi tiết khối lượng – {n}',
     'tc.tg.h': 'Khối lượng hỗ trợ giảng dạy – Trợ giảng', 'tc.tg.info': 'Trợ giảng không phụ trách lớp học phần riêng. Khối lượng được tính bằng số tiết hỗ trợ các lớp thí nghiệm/thực hành của Bộ môn, so với định mức 180 tiết/năm.',
     'tc.tg.rule': 'Phân công (giả định): lớp thí nghiệm có sĩ số vượt sức chứa PTN ({c} chỗ) phải tách nhóm và được phân công Trợ giảng hỗ trợ toàn bộ số tiết.',
@@ -56,11 +59,13 @@ App.addI18n({
     'tc.ktv.bylab': 'Giờ hỗ trợ theo PTN', 'tc.ktv.none': 'Bạn chưa được giao PTN nào.', 'tc.ktv.src': 'KTV không có định mức giờ chuẩn – giả định của ứng dụng',
   },
   en: {
-    'tc.sub': 'Standard hours converted from the timetable and thesis/project supervision; quota by academic title, degree and concurrent positions.',
+    'tc.sub': 'Your teaching hours this academic year and progress against the quota.',
     'tc.year': 'Academic year', 'tc.term': 'Semester', 'tc.term.all': 'Whole year', 'tc.term.1': 'Sem 1', 'tc.term.2': 'Sem 2', 'tc.term.3': 'Summer',
-    'tc.y.closed': 'closed', 'tc.y.open': 'in progress', 'tc.inprog': 'Academic year {y} is in progress – provisional figures from the scheduled timetable (Sem 1); not used for reconciliation.',
+    'tc.y.closed': 'closed', 'tc.y.open': 'in progress', 'tc.inprog': 'Academic year {y} is in progress – figures are provisional.',
     'tc.tab.me': 'Personal', 'tc.tab.dept': 'Department', 'tc.tab.fac': 'Whole faculty', 'tc.tab.school': 'Whole university',
-    'tc.k.total': 'Total standard hours', 'tc.k.quota': 'Required quota', 'tc.k.pct': 'Completion', 'tc.k.ot': 'Hours above quota',
+    'tc.k.total': 'Total standard hours', 'tc.k.quota': 'Quota', 'tc.k.pct': 'Completed', 'tc.k.ot': 'Hours above quota',
+    'tc.k.diff': 'Hours over / short', 'tc.k.over': 'hours above quota', 'tc.k.short': 'hours still needed', 'tc.c.nst': 'Students',
+    'tc.detail': 'How it is calculated', 'tc.d.norm': 'Quota', 'tc.d.formula': 'Formula', 'tc.d.coef': 'Per-section coefficients', 'tc.d.ot': 'Overtime pay', 'tc.d.info': 'How it is recorded',
     'tc.k.ugpg': 'UG {a} · PG {b}', 'tc.k.otcap': 'max 200 periods/year (Circular 21/2025)', 'tc.k.base': 'base {b} × {p}%',
     'tc.ug': 'Undergraduate', 'tc.pg': 'Postgraduate', 'tc.secs': 'Course sections', 'tc.sups': 'Thesis, project and internship supervision',
     'tc.c.code': 'Code', 'tc.c.name': 'Course', 'tc.c.term': 'Sem', 'tc.c.type': 'Type', 'tc.c.cr': 'Cr', 'tc.c.size': 'Size', 'tc.c.grp': 'Group',
@@ -69,7 +74,8 @@ App.addI18n({
     'tc.sup.KLTN': 'UG graduation thesis', 'tc.sup.DA': 'UG project', 'tc.sup.TT': 'Internship / course project', 'tc.sup.LVThS': 'Master thesis',
     'tc.role.main': 'Main supervisor', 'tc.role.co': 'Co-supervisor (half)',
     'tc.pg.nofeat': 'The active role does not have the "Teaching workload – Postgraduate" feature.',
-    'tc.pg.ths': 'Lecturers holding a master\'s degree have no postgraduate workload: they may not teach theory courses in master programmes (except non-major languages, Philosophy, practice/internship guidance), may not be the main thesis supervisor and may co-supervise at most 2 applied-track students.',
+    'tc.pg.ths': 'Lecturers holding a master\'s degree have no postgraduate workload.',
+    'tc.pg.thsd': 'Lecturers holding a master\'s degree may not teach theory courses in master programmes (except non-major languages, Philosophy, practice/internship guidance), may not be the main thesis supervisor and may co-supervise at most 2 applied-track students.',
     'tc.norm': 'Annual quota', 'tc.n.title': 'Quota category', 'tc.n.base': 'Teaching quota (standard hours)', 'tc.n.red': 'Reduction for positions',
     'tc.n.nored': 'No position with a quota reduction', 'tc.n.min': 'teach at least {p}%', 'tc.n.multi': 'Several positions: the lowest quota applies.',
     'tc.n.quota': 'Required quota', 'tc.n.res': 'Research quota', 'tc.n.other': 'Other duties (NV3)', 'tc.n.year': 'Annual working time',
@@ -90,15 +96,15 @@ App.addI18n({
     'tc.ot.note': 'Overtime is paid only after deducting unmet research/other duties (Decision 593 Art. 15.5.a); tasks already paid from other sources are not converted (Circular 21 Art. 3.5). Paid after the academic year ends.',
     'tc.ot.none': 'No hours above quota this academic year.', 'tc.ot.reason': 'View overtime pay estimate (salary data)', 'tc.ot.prov': 'provisional',
     'tc.ot.ocr': 'The Circular 21 Art. 5.1.b formula was rebuilt from an OCR copy – to be checked against the original.',
-    'tc.rec': 'Year-end reconciliation', 'tc.rec.btn': 'Confirm year-end reconciliation', 'tc.rec.desc': 'Confirm the {y} workload statement via process QT-ĐHQT-GD-04 (5-working-day window; each line may be disputed with evidence).',
+    'tc.rec': 'Year-end reconciliation', 'tc.rec.btn': 'Confirm year-end reconciliation', 'tc.rec.desc': 'Check and confirm your {y} workload statement.',
     'tc.rec.notyet': 'The year is not over – reconciliation opens in September (Decision 593 Art. 19: settlement in September, payment/recovery from October).',
     'tc.rec.done': 'Request {id} submitted', 'tc.rec.step': 'Current step: {s}', 'tc.rec.open': 'Open request', 'tc.rec.dispute': 'Dispute / notes (optional)',
     'tc.rec.consent': 'I have checked and confirm the workload statement above.', 'tc.rec.need': 'Please tick the confirmation box.', 'tc.rec.mfa': 'Confirm workload reconciliation for {y}',
     'tc.rec.ok': 'Reconciliation confirmed – the Head of Department/Dean will review it.', 'tc.rec.local': 'Stored locally (process module not connected).', 'tc.rec.roles': 'Concurrent positions',
     'tc.rs.nhap': 'Draft', 'tc.rs.dang_xu_ly': 'In progress', 'tc.rs.tra_lai': 'Returned', 'tc.rs.hoan_thanh': 'Completed', 'tc.rs.huy': 'Cancelled',
     'tc.m.h': 'Teaching workload – {s}', 'tc.m.n': 'Lecturers', 'tc.m.met': 'Quota met', 'tc.m.under': 'Below 80% of quota', 'tc.m.ot': 'Total hours above quota',
-    'tc.m.chart': 'Standard hours vs quota (red mark = quota)', 'tc.m.dept': 'Department', 'tc.m.alld': 'All departments', 'tc.m.title': 'Quota code',
-    'tc.m.ok': 'Met', 'tc.m.near': 'Nearly met', 'tc.m.low': 'Under-loaded', 'tc.m.over': 'Over 200 cap', 'tc.m.click': 'Click a row for details (the view is logged).',
+    'tc.m.chart': 'Standard hours vs quota', 'tc.m.dept': 'Department', 'tc.m.alld': 'All departments', 'tc.m.title': 'Quota code',
+    'tc.m.ok': 'Met', 'tc.m.near': 'Nearly met', 'tc.m.low': 'Under-loaded', 'tc.m.over': 'Over 200 cap', 'tc.m.click': 'Click a row for details.',
     'tc.m.csv': 'Export unit workload table (personal data)', 'tc.m.exported': 'CSV exported and logged.', 'tc.m.detail': 'Workload details – {n}',
     'tc.tg.h': 'Teaching support workload – Teaching assistant', 'tc.tg.info': 'Teaching assistants do not own course sections. Their workload is the number of periods supporting the department\'s lab/practice sections, against a quota of 180 periods per year.',
     'tc.tg.rule': 'Assignment (assumption): lab sections larger than the lab capacity ({c} seats) are split and the teaching assistant supports all their periods.',
@@ -161,27 +167,42 @@ App.addI18n({
       { t: 'KLcs', k: 'credits', cls: 'num' }, { t: 'Hcs', f: (s) => App.fmtNum(s.Hcs, 2), cls: 'num' }, { t: t('tc.c.hours'), f: (s) => `<b>${n1(s.hours)}</b>`, cls: 'num' },
     ], sups);
   }
+  /* bảng gọn cho trang cá nhân */
+  function secTableS(secs) {
+    return App.ui.table([
+      { t: t('tc.c.code'), f: (s) => `<b>${esc(s.ma_hp)}</b>` },
+      { t: t('tc.c.name'), f: (s) => esc(App.lang === 'en' ? s.ten_en : s.ten_vi) + (s.loai === 'TN' ? ` <span class="muted small">(${t('tc.t.TN')})</span>` : '') },
+      { t: t('tc.c.term'), f: (s) => termLbl(s.hoc_ky), cls: 'c' }, { t: t('tc.c.size'), k: 'si_so', cls: 'num' },
+      { t: t('tc.c.hours'), f: (s) => `<b>${n1(s.hours)}</b>`, cls: 'num' },
+    ], secs);
+  }
+  function supTableS(sups) {
+    const g = {};
+    sups.forEach((s) => { const x = g[s.loai] = g[s.loai] || { loai: s.loai, n: 0, h: 0 }; x.n++; x.h += s.hours; });
+    return App.ui.table([
+      { t: t('tc.c.type'), f: (r) => esc(t('tc.sup.' + r.loai)) }, { t: t('tc.c.nst'), k: 'n', cls: 'num' },
+      { t: t('tc.c.hours'), f: (r) => `<b>${n1(r.h)}</b>`, cls: 'num' },
+    ], Object.values(g));
+  }
   function levelBody(el, s, y, lvl) {
     if (lvl === 'SDH') {
       if (!App.acl.has('wl_pg')) { el.innerHTML = `<div class="notice warn">${t('tc.pg.nofeat')}</div>`; return; }
-      if (!y.norm.postgrad) { el.innerHTML = `<div class="notice warn">${t('tc.pg.ths')}${src('THS108 Điều 27.2, Điều 16.2.a, 16.3, 16.5', 'ban_hanh')}</div>`; return; }
+      if (!y.norm.postgrad) { el.innerHTML = `<div class="notice">${t('tc.pg.ths')}</div>`; return; }
     }
     const secs = y.secs.filter((x) => x.bac === lvl && termOK(x));
     const sups = y.sups.filter((x) => x.bac === lvl);
     const hs = secs.reduce((a, b) => a + b.hours, 0), hp = sups.reduce((a, b) => a + b.hours, 0);
-    el.innerHTML = `<div class="card-h"><h3>${t('tc.secs')}</h3><span class="chip">${t('tc.sum', { h: n1(hs) })}</span></div>${secTable(secs)}
-      <div class="card-h" style="margin-top:14px"><h3>${t('tc.sups')}</h3>${S.term === 'all' ? `<span class="chip">${t('tc.sum', { h: n1(hp) })}</span>` : ''}</div>
-      ${S.term === 'all' ? supTable(sups) : `<div class="muted small">${t('tc.supterm')}</div>`}`;
+    el.innerHTML = `<div class="card-h"><h3>${t('tc.secs')}</h3><span class="chip">${n1(hs)} ${t('tc.h')}</span></div>${secTableS(secs)}
+      ${S.term === 'all' ? `<div class="card-h" style="margin-top:14px"><h3>${t('tc.sups')}</h3><span class="chip">${n1(hp)} ${t('tc.h')}</span></div>${supTableS(sups)}` : ''}`;
   }
 
   /* --- thẻ định mức --- */
-  function normCard(s, y) {
+  function normBody(s, y) {
     const n = y.norm, it = nb(n.code), red = T.reductions || {};
     const yr = T.annual_work_hours || {}, cv = conv('teach_hour_to_admin'), dm = cons('direct_min');
     const resIt = ((R.research || {}).norm_by_title || []).find((x) => x.code === n.code);
     const pct = y.pct;
-    return `<div class="card"><div class="card-h"><h3>${t('tc.norm')} ${esc(yl(S.year))}</h3><button class="btn ghost sm" data-formula>${t('tc.formula')}</button></div>
-      <div class="fields" style="grid-template-columns:1fr">
+    return `<div class="fields" style="grid-template-columns:1fr">
         <div class="fld"><div class="k">${t('tc.n.title')}</div><div class="v">${esc(App.L(it, 'title') || n.code)} <span class="chip">${esc(n.code)}</span></div></div>
         <div class="fld"><div class="k">${t('tc.n.base')}</div><div class="v">${n1(n.base)} ${t('tc.h')}</div>${src(String(it.source || '').split(';')[0].replace(/^teach:\s*/, ''), 'du_thao')}</div>
         <div class="fld"><div class="k">${t('tc.n.red')}</div><div class="v">${n.reductions.length ? n.reductions.map((r) => `<div>${esc(redLabel(r.label))}: ${t('tc.n.min', { p: r.pct })}${src(r.source, 'ban_hanh')}</div>`).join('') : `<span class="muted">${t('tc.n.nored')}</span>`}</div>
@@ -194,11 +215,12 @@ App.addI18n({
           <div class="small" style="margin-top:6px">${t('tc.n.conv')}</div>${src(cv.source, cv.status)}
           <div class="small muted">${t('tc.n.check', { a: n1(n.base), b: n1(n.research), c: n1(n.other), s: App.fmtNum(3 * n.base + 3 * n.research + n.other, 0) })}</div></div>
         <div class="fld"><div class="k">${esc(t('tc.n.direct'))}</div>${src(dm.source, dm.status)}</div>
-      </div></div>`;
+        ${!n.postgrad ? `<div class="fld"><div class="k">${t('tc.pg')}</div><div class="small">${t('tc.pg.thsd')}</div>${src('THS108 Điều 27.2, Điều 16.2.a, 16.3, 16.5', 'ban_hanh')}</div>` : ''}
+      </div>`;
   }
 
   /* --- tiền dạy thêm giờ (TT 21/2025) --- */
-  function otCard(s, y) {
+  function otBody(s, y) {
     const ot = T.overtime_tt21 || {};
     const raw = Math.max(0, y.total - y.norm.teach);
     const shown = S.otUntil > Date.now();
@@ -218,11 +240,12 @@ App.addI18n({
           <div class="fld"><div class="k">${t('tc.ot.sum')}${S.year !== YEARS[0] ? ' (' + t('tc.ot.prov') + ')' : ''}</div><div class="v" style="font-size:1.2rem;color:var(--navy)">${vnd(sum)}</div></div></div>
         <div class="notice warn small" style="margin:8px 0 0">${t('tc.ot.assume')}</div>`;
     }
-    return `<div class="card"><div class="card-h"><h3>${t('tc.ot')}</h3>${App.ui.cls('CN')}</div>
-      <div class="small">${esc(t('tc.ot.f'))}</div>${src(ot.source, ot.status)}<div class="small muted">${t('tc.ot.ocr')}</div>
-      <div class="fields" style="grid-template-columns:1fr;margin:8px 0"><div class="fld"><div class="k">${t('tc.ot.per')}</div><div class="v" style="font-size:1.15rem">${n1(y.overtime)}</div>
+    return `<div class="card-h"><h4 style="margin:0">${t('tc.ot')}</h4>${App.ui.cls('CN')}</div>
+      <div class="fields" style="grid-template-columns:1fr;margin:0 0 8px"><div class="fld"><div class="k">${t('tc.ot.per')}</div><div class="v" style="font-size:1.15rem">${n1(y.overtime)}</div>
         <div class="small muted">${t('tc.ot.raw', { h: n1(raw) })} · ${t('tc.k.otcap')}</div></div></div>
-      ${body}<div class="small muted" style="margin-top:8px">${t('tc.ot.note')}</div>${src('QD593 Điều 15.5.a; TT21 Điều 3.5, 3.7', 'ban_hanh')}</div>`;
+      ${body}
+      <div class="small" style="margin-top:10px">${esc(t('tc.ot.f'))}</div>${src(ot.source, ot.status)}<div class="small muted">${t('tc.ot.ocr')}</div>
+      <div class="small muted" style="margin-top:8px">${t('tc.ot.note')}</div>${src('QD593 Điều 15.5.a; TT21 Điều 3.5, 3.7', 'ban_hanh')}`;
   }
 
   /* --- đối soát cuối năm (QT-ĐHQT-GD-04) --- */
@@ -237,13 +260,12 @@ App.addI18n({
     let body;
     if (r) {
       const st = (p.tobe_steps || [])[r.buoc_hien_tai];
-      body = `<div class="row between"><b>${t('tc.rec.done', { id: esc(r.id) })}</b>${reqStatus(r)}</div>
-        ${st && r.trang_thai !== 'hoan_thanh' ? `<div class="small muted">${t('tc.rec.step', { s: esc(App.L(st)) })}</div>` : ''}
-        <div class="small muted">${App.fmtDT(r.tao_luc)}${r.local ? ' · ' + t('tc.rec.local') : ''}</div>
-        ${App.acl.has('eprocess') ? `<a class="btn ghost sm" style="margin-top:8px" href="#/processes/hs/${encodeURIComponent(r.id)}">${t('tc.rec.open')}</a>` : ''}`;
-    } else if (!closed) body = `<div class="muted small">${t('tc.rec.notyet')}</div>${src('QD593 Điều 19.1-19.2', 'ban_hanh')}`;
-    else body = `<p class="small">${t('tc.rec.desc', { y: yl(S.year) })}</p><button class="btn" data-rec>${t('tc.rec.btn')}</button>`;
-    return `<div class="card"><div class="card-h"><h3>${t('tc.rec')}</h3><span class="chip">QT-ĐHQT-GD-04</span></div>${body}</div>`;
+      body = `<div><b>${t('tc.rec')}</b> · <span class="small">${t('tc.rec.done', { id: esc(r.id) })}</span> ${reqStatus(r)}
+        ${st && r.trang_thai !== 'hoan_thanh' ? `<div class="small muted">${t('tc.rec.step', { s: esc(App.L(st)) })}</div>` : ''}</div>
+        ${App.acl.has('eprocess') ? `<a class="btn ghost sm" href="#/processes/hs/${encodeURIComponent(r.id)}">${t('tc.rec.open')}</a>` : ''}`;
+    } else if (!closed) return '';
+    else body = `<div><b>${t('tc.rec')}</b> · <span class="small">${t('tc.rec.desc', { y: yl(S.year) })}</span></div><button class="btn sm" data-rec>${t('tc.rec.btn')}</button>`;
+    return `<div class="card"><div class="row between">${body}</div></div>`;
   }
   function openRec(s, y, rerender) {
     const rs = C.yearResearch(s.ma_cb, S.year);
@@ -283,7 +305,7 @@ App.addI18n({
   }
 
   /* --- giải thích công thức --- */
-  function formulaModal(y) {
+  function formulaBody(y) {
     const f = T.formula || {};
     const acts = (T.activities || []).filter((a) => ['lecture_ug', 'lecture_pg', 'tutorial', 'lab', 'project_ug', 'thesis_ug', 'thesis_master', 'fieldtrip_project'].includes(a.key));
     const coef = (k) => (T.coefficients || []).find((c) => c.key === k) || {};
@@ -291,15 +313,46 @@ App.addI18n({
       { t: t('tc.f.range'), f: (r) => r.min + (r.max == null ? '+' : '–' + r.max) }, { t: 'Hlđ', f: (r) => esc(r.Hld) }, { t: 'Hns', f: (r) => esc(r.Hns) }], c.rule || [])}${src(c.source, c.status)}`;
     const hcs = (a) => (a.hours_per_unit != null ? a.hours_per_unit : a.Hcs != null ? a.Hcs : (a.Hcs_rule || []).map((r) => r.Hcs + (r.max_students ? ' (≤' + r.max_students + ')' : ' (≥' + r.min_students + ')')).join(' / '));
     const ex = (y.secs || []).slice().sort((a, b) => (b.Hld + b.Hns) - (a.Hld + a.Hns))[0];
-    App.ui.modal(`<h3>${t('tc.f.h')}</h3><div class="notice">${esc(t('tc.f.main'))}${src(f.source, f.status)}</div>
+    return (`<h4 style="margin:0 0 6px">${t('tc.f.h')}</h4><div class="notice">${esc(t('tc.f.main'))}${src(f.source, f.status)}</div>
       <h4 style="margin:12px 0 4px">${t('tc.f.act')}</h4>${App.ui.table([
         { t: t('tc.f.act.n'), f: (a) => esc(App.L(a)) }, { t: t('tc.f.unit'), f: (a) => esc(a.unit || '') }, { t: t('tc.f.kl'), f: (a) => `<code>${esc(a.KLcs || '')}</code>` },
         { t: 'Hcs', f: (a) => esc(hcs(a)), cls: 'num' }, { t: t('source'), f: (a) => `<span class="small">${esc(a.source)}</span> ${stBadge(a.status)}` }], acts)}
       ${ctab(coef('class_size_lecture'), t('tc.f.lec'))}${ctab(coef('class_size_lab'), t('tc.f.lab'))}
       <p class="small">${t('tc.f.cap')}</p><p class="small">${t('tc.f.gt120')}</p><p class="small">${t('tc.f.tc')} ${stBadge('gia_dinh')}</p>
       ${ex ? `<h4 style="margin:12px 0 4px">${t('tc.f.ex')}</h4><div class="notice small">${esc(ex.ma_hp)} – ${esc(App.lang === 'en' ? ex.ten_en : ex.ten_vi)} (${t('tc.t.' + ex.loai)}, n = ${ex.si_so}):
-        KLcs = ${n1(ex.KL)}; Hcs = ${App.fmtNum(ex.Hcs, 2)}; Hlđ = ${App.fmtNum(ex.Hld, 4)}; Hns = ${App.fmtNum(ex.Hns, 4)} ⇒ ${n1(ex.KL)} × ${App.fmtNum(Math.min(ex.Hcs + ex.Hld + ex.Hns, 1.5 * ex.Hcs), 4)} = <b>${n1(ex.hours)}</b> ${t('tc.h')}</div>` : ''}`, true);
+        KLcs = ${n1(ex.KL)}; Hcs = ${App.fmtNum(ex.Hcs, 2)}; Hlđ = ${App.fmtNum(ex.Hld, 4)}; Hns = ${App.fmtNum(ex.Hns, 4)} ⇒ ${n1(ex.KL)} × ${App.fmtNum(Math.min(ex.Hcs + ex.Hld + ex.Hns, 1.5 * ex.Hcs), 4)} = <b>${n1(ex.hours)}</b> ${t('tc.h')}</div>` : ''}`);
   }
+
+  /* --- cửa sổ "Chi tiết cách tính" (định mức, công thức, hệ số từng lớp, tiền vượt giờ) --- */
+  function detailModal(u, y, tab) {
+    const m = App.ui.modal(`<h3>${t('tc.detail')} – ${esc(yl(S.year))}</h3><div data-mt></div><div data-mb></div>`, true);
+    const mb = m.querySelector('[data-mb]');
+    const tabs = [{ k: 'norm', t: t('tc.d.norm') }, { k: 'formula', t: t('tc.d.formula') }, { k: 'coef', t: t('tc.d.coef') }, { k: 'ot', t: t('tc.d.ot') }];
+    const show = (k) => {
+      if (k === 'norm') mb.innerHTML = normBody(u, y);
+      else if (k === 'formula') mb.innerHTML = formulaBody(y);
+      else if (k === 'coef') {
+        const secs = y.secs.filter(termOK);
+        mb.innerHTML = `<h4 style="margin:0 0 6px">${t('tc.secs')}</h4>${secTable(secs)}${S.term === 'all' ? `<h4 style="margin:12px 0 6px">${t('tc.sups')}</h4>${supTable(y.sups)}` : `<div class="muted small">${t('tc.supterm')}</div>`}`;
+      } else {
+        mb.innerHTML = otBody(u, y);
+        const sh = mb.querySelector('[data-otshow]');
+        if (sh) sh.onclick = async () => {
+          if (!(await App.stepUp(t('tc.ot.reason')))) return;
+          S.otUntil = Date.now() + 5 * 60000;
+          App.audit('XEM_CA_NHAN', 'Xem ước tính tiền dạy thêm giờ năm học ' + S.year + ' (hệ số lương × lương cơ sở)', u.ma_cb, 'Tự tra cứu');
+          detailModal(u, y, 'ot');
+        };
+        const hsI = mb.querySelector('[data-hs]'), lcsI = mb.querySelector('[data-lcs]');
+        if (hsI) hsI.onchange = () => { S.hs = Math.max(0, Number(hsI.value) || 0); show('ot'); };
+        if (lcsI) lcsI.onchange = () => { S.lcs = Math.max(0, Number(lcsI.value) || 0); show('ot'); };
+      }
+    };
+    App.ui.tabs(m.querySelector('[data-mt]'), tabs, tab, show);
+    show(tab);
+  }
+  /* cửa sổ ghi chú cho TG/KTV */
+  function infoModal(title, html) { App.ui.modal(`<h3>${esc(title)}</h3>${html}`); }
 
   /* --- khung trang --- */
   function render(main, params) {
@@ -329,26 +382,18 @@ App.addI18n({
   function personal(el, u, rerender) {
     const y = C.yearTeaching(u.ma_cb, S.year), n = y.norm;
     const pk = y.pct >= 100 ? 'ok' : y.pct >= 80 ? 'warn' : 'bad';
+    const diff = Math.round((y.total - n.teach) * 10) / 10;
     el.innerHTML = `<div class="kpis">${App.ui.kpi(t('tc.k.total'), n1(y.total), t('tc.k.ugpg', { a: n1(y.ug), b: n1(y.pg) }))}
-        ${App.ui.kpi(t('tc.k.quota'), n1(n.teach), t('tc.k.base', { b: n1(n.base), p: n.minPct }), 'cyan')}
+        ${App.ui.kpi(t('tc.k.quota'), n1(n.teach), t('tc.h'), 'cyan')}
         ${App.ui.kpi(t('tc.k.pct'), App.fmtNum(y.pct, 0) + '%', App.ui.progress(y.pct, pk), pk)}
-        ${App.ui.kpi(t('tc.k.ot'), n1(y.overtime), t('tc.k.otcap'), y.overtime ? 'warn' : '')}</div>
-      <div class="grid g-2-1"><div><div class="card"><div data-lt></div><div data-lb></div></div></div>
-      <div>${normCard(u, y)}${otCard(u, y)}${recCard(u)}</div></div>`;
+        ${App.ui.kpi(t('tc.k.diff'), (diff > 0 ? '+' : diff < 0 ? '−' : '') + n1(Math.abs(diff)), t(diff >= 0 ? 'tc.k.over' : 'tc.k.short'), diff >= 0 ? 'ok' : S.year === YEARS[0] ? 'bad' : '')}</div>
+      <div class="card"><div class="row between" style="align-items:flex-start"><div data-lt></div>
+        <button class="linkbtn small" data-detail>${t('tc.detail')}</button></div><div data-lb></div></div>
+      ${recCard(u)}`;
     const lb = el.querySelector('[data-lb]');
     App.ui.tabs(el.querySelector('[data-lt]'), [{ k: 'DH', t: t('tc.ug') + ' (' + n1(y.ug) + ')' }, { k: 'SDH', t: t('tc.pg') + ' (' + n1(y.pg) + ')' }], S.lvl, (k) => { S.lvl = k; levelBody(lb, u, y, k); });
     levelBody(lb, u, y, S.lvl);
-    el.querySelector('[data-formula]').onclick = () => formulaModal(y);
-    const sh = el.querySelector('[data-otshow]');
-    if (sh) sh.onclick = async () => {
-      if (!(await App.stepUp(t('tc.ot.reason')))) return;
-      S.otUntil = Date.now() + 5 * 60000;
-      App.audit('XEM_CA_NHAN', 'Xem ước tính tiền dạy thêm giờ năm học ' + S.year + ' (hệ số lương × lương cơ sở)', u.ma_cb, 'Tự tra cứu');
-      rerender();
-    };
-    const hsI = el.querySelector('[data-hs]'), lcsI = el.querySelector('[data-lcs]');
-    if (hsI) hsI.onchange = () => { S.hs = Math.max(0, Number(hsI.value) || 0); rerender(); };
-    if (lcsI) lcsI.onchange = () => { S.lcs = Math.max(0, Number(lcsI.value) || 0); rerender(); };
+    el.querySelector('[data-detail]').onclick = () => detailModal(u, y, 'norm');
     const rb = el.querySelector('[data-rec]');
     if (rb) rb.onclick = () => openRec(u, y, rerender);
   }
@@ -412,17 +457,17 @@ App.addI18n({
     const it = nb('TG'), norm = Number(it.teach_hours) || 180;
     const tot = all.reduce((a, b) => a + b.sup, 0), pct = tot / norm * 100;
     const pk = pct >= 100 ? 'ok' : pct >= 80 ? 'warn' : 'bad';
-    el.innerHTML = `<div class="notice">${t('tc.tg.info')}${src(it.source, it.status)}</div>
-      <div class="kpis">${App.ui.kpi(t('tc.tg.secs'), all.length, esc(App.L(App.dept(u.bo_mon))))}${App.ui.kpi(t('tc.tg.asg'), all.filter((x) => x.asg).length, '', 'cyan')}
+    el.innerHTML = `<div class="kpis">${App.ui.kpi(t('tc.tg.secs'), all.length, esc(App.L(App.dept(u.bo_mon))))}${App.ui.kpi(t('tc.tg.asg'), all.filter((x) => x.asg).length, '', 'cyan')}
         ${App.ui.kpi(t('tc.tg.per'), App.fmtNum(tot, 0) + ' <small style="font-size:.9rem">/ ' + norm + '</small>', App.ui.progress(pct, pk), pk)}
         ${App.ui.kpi(t('tc.tg.norm'), norm, t('tc.tg.unit') + ' · ' + App.fmtNum(pct, 0) + '%')}</div>
-      <div class="card"><div class="card-h"><h3>${t('tc.tg.h')} – ${esc(yl(S.year))}</h3>${stBadge('gia_dinh')}</div>
-        <p class="small muted">${t('tc.tg.rule', { c: cap })}</p>
+      <div class="card"><div class="card-h"><h3>${t('tc.tg.h')} – ${esc(yl(S.year))}</h3><button class="linkbtn small" data-detail>${t('tc.detail')}</button></div>
         ${App.ui.table([
           { t: t('tc.c.code'), f: (s) => `<b>${esc(s.ma_hp)}</b>` }, { t: t('tc.c.name'), f: (s) => esc(App.lang === 'en' ? s.ten_en : s.ten_vi) },
           { t: t('tc.c.term'), f: (s) => termLbl(s.hoc_ky), cls: 'c' }, { t: t('tc.tg.lect'), f: (s) => esc(App.name(App.staff(s.ma_cb), { title: true })) },
           { t: t('tc.c.grp'), k: 'nhom', cls: 'num' }, { t: t('tc.c.size'), k: 'si_so', cls: 'num' }, { t: t('tc.c.per'), k: 'per', cls: 'num' },
           { t: t('status'), f: (s) => App.ui.badge(s.asg ? t('tc.tg.yes') : t('tc.tg.no'), s.asg ? 'ok' : '') }, { t: t('tc.tg.per'), f: (s) => `<b>${s.sup}</b>`, cls: 'num' }], rows)}</div>`;
+    el.querySelector('[data-detail]').onclick = () => infoModal(t('tc.detail'), `<div class="notice">${t('tc.tg.info')}${src(it.source, it.status)}</div>
+      <p class="small">${t('tc.tg.rule', { c: cap })} ${stBadge('gia_dinh')}</p>`);
   }
 
   /* --- Kỹ thuật viên: giờ hỗ trợ thí nghiệm tại PTN được giao --- */
@@ -438,16 +483,17 @@ App.addI18n({
     });
     const rows = all.filter(termOK);
     const hrs = all.reduce((a, b) => a + b.hrs, 0), ses = all.reduce((a, b) => a + b.ses, 0);
-    el.innerHTML = `<div class="notice">${t('tc.ktv.info')}${src('TT20 Điều 3.1 (1.760); ' + t('tc.ktv.src'), 'gia_dinh')}</div>
-      <div class="kpis">${App.ui.kpi(t('tc.ktv.labs'), labs.length, esc(labs.map((l) => l.ma).join(', ')))}${App.ui.kpi(t('tc.ktv.ses'), ses, all.length + ' ' + t('tc.secs').toLowerCase(), 'cyan')}
+    el.innerHTML = `<div class="kpis">${App.ui.kpi(t('tc.ktv.labs'), labs.length, esc(labs.map((l) => l.ma).join(', ')))}${App.ui.kpi(t('tc.ktv.ses'), ses, all.length + ' ' + t('tc.secs').toLowerCase(), 'cyan')}
         ${App.ui.kpi(t('tc.ktv.hrs'), n1(hrs), t('tc.hadm'))}${App.ui.kpi(t('tc.ktv.share'), App.fmtNum(hrs / 1760 * 100, 1) + '%', '1.760 ' + t('tc.hadm'))}</div>
       <div class="card"><h3>${t('tc.ktv.bylab')}</h3>${App.ui.chart.hbars(labs.map((l, i) => ({ l: App.L(l, 'ten'), v: all.filter((x) => x.lab === l).reduce((a, b) => a + b.hrs, 0), c: App.ui.chart.PAL[i % 4] })))}</div>
-      <div class="card"><div class="card-h"><h3>${t('tc.ktv.h')} – ${esc(yl(S.year))}</h3>${stBadge('gia_dinh')}</div><p class="small muted">${t('tc.ktv.rule')}</p>
+      <div class="card"><div class="card-h"><h3>${t('tc.ktv.h')} – ${esc(yl(S.year))}</h3><button class="linkbtn small" data-detail>${t('tc.detail')}</button></div>
         ${App.ui.table([
           { t: t('tc.ktv.lab'), f: (s) => `<span class="chip">${esc(s.lab.ma)}</span>` }, { t: t('tc.c.code'), f: (s) => `<b>${esc(s.ma_hp)}</b>` },
           { t: t('tc.c.name'), f: (s) => esc(App.lang === 'en' ? s.ten_en : s.ten_vi) }, { t: t('tc.c.term'), f: (s) => termLbl(s.hoc_ky), cls: 'c' },
           { t: t('tc.tg.lect'), f: (s) => esc(App.name(App.staff(s.ma_cb), { title: true })) }, { t: t('tc.c.size'), k: 'si_so', cls: 'num' },
           { t: t('tc.c.per'), k: 'per', cls: 'num' }, { t: t('tc.ktv.ses'), k: 'ses', cls: 'num' }, { t: t('tc.ktv.hrs'), f: (s) => `<b>${n1(s.hrs)}</b>`, cls: 'num' }], rows)}</div>`;
+    el.querySelector('[data-detail]').onclick = () => infoModal(t('tc.detail'), `<div class="notice">${t('tc.ktv.info')}${src('TT20 Điều 3.1 (1.760); ' + t('tc.ktv.src'), 'gia_dinh')}</div>
+      <p class="small">${t('tc.ktv.rule')} ${stBadge('gia_dinh')}</p>`);
   }
 
   App.page('teaching', { render });

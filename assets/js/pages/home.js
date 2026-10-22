@@ -72,6 +72,7 @@ App.page('home', {
         <div class="kpis" style="margin:0">${App.ui.kpi(t('h.staff'), fac.length, lect.length + ' GV')}${App.ui.kpi(t('h.complete'), Math.round(done / lect.length * 100) + '%', done + '/' + lect.length, 'cyan')}
         ${App.ui.kpi(t('h.q12'), q12, '', 'ok')}${App.ui.kpi(t('h.svwarn'), risks.filter((r) => ['red', 'orange'].includes(r.level)).length + '/' + risks.length, '', 'bad')}
         ${App.ui.kpi(t('h.sla'), fin.length ? Math.round(ok / fin.length * 100) + '%' : '–', fin.length + ' HS', 'warn')}${App.ui.kpi(t('h.ready'), Math.round(ready / D.equipment.length * 100) + '%', ready + '/' + D.equipment.length)}</div></div>`;
+      if (['TK', 'PTK', 'BGH'].includes(role)) html += '<div data-kpiboard></div>';
     }
     html += `<div class="grid g-2-1"><div>`;
     if (pos) {
@@ -87,5 +88,130 @@ App.page('home', {
     const quick = [['processes', 'h.q.new'], ['profile', 'h.q.cv'], ['teaching', 'h.q.wl'], ['students', 'h.q.sv'], ['lab', 'h.q.lab']].filter(([k]) => App.canNav(App.NAV.find((n) => n.k === k)));
     html += `<div class="card"><h3>${t('h.quick')}</h3><div class="row">${quick.map(([k, l]) => `<a class="btn ghost sm" href="#/${k}">${t(l)}</a>`).join('')}</div></div></div></div>`;
     main.innerHTML = html;
+    const kb = main.querySelector('[data-kpiboard]');
+    if (kb) App.kpiBoard(kb, u);
   },
 });
+
+/* ---------------------------------------------------------------------------------------------
+   Bảng KPI theo quý cho Ban chủ nhiệm Khoa (TK: toàn bộ; PTK: lĩnh vực phụ trách; BGH: toàn bộ).
+   Quý gần nhất lấy từ dữ liệu thật của ứng dụng khi có; các quý trước là số GIẢ LẬP (seed cố định). */
+App.addI18n({
+  vi: {
+    'kq.title': 'Đánh giá KPI Khoa theo quý – năm 2026', 'kq.sim': 'Số liệu giả lập', 'kq.ytd': 'Mức hoàn thành lũy kế năm',
+    'kq.byq': 'Mức hoàn thành trung bình theo quý', 'kq.heat': 'Bảng KPI theo quý (chỉ tiêu dạng số lượng hiển thị lũy kế)', 'kq.kpi': 'Chỉ tiêu', 'kq.target': 'Mục tiêu năm',
+    'kq.now': 'Lũy kế / hiện tại', 'kq.done': 'Hoàn thành', 'kq.trend': 'Xu hướng', 'kq.q': 'Quý {q}', 'kq.q4': 'Quý 4 (đang thực hiện)',
+    'kq.l1': 'Vượt / đạt (≥ 100%)', 'kq.l2': 'Gần đạt (85–99%)', 'kq.l3': 'Cần cố gắng (70–84%)', 'kq.l4': 'Chưa đạt (< 70%)',
+    'kq.detail': 'Chi tiết quý', 'kq.lower': 'càng thấp càng tốt', 'kq.area.all': 'Tất cả lĩnh vực', 'kq.area.dt': 'Đào tạo & Sinh viên', 'kq.area.kh': 'KHCN & Doanh nghiệp',
+    'kq.n': '{n} chỉ tiêu', 'kq.focus': 'Cần tập trung', 'kq.good': 'Điểm sáng',
+  },
+  en: {
+    'kq.title': 'Faculty KPIs by quarter – 2026', 'kq.sim': 'Simulated figures', 'kq.ytd': 'Year-to-date completion',
+    'kq.byq': 'Average completion by quarter', 'kq.heat': 'Quarterly KPI board (count indicators shown cumulatively)', 'kq.kpi': 'Indicator', 'kq.target': 'Annual target',
+    'kq.now': 'YTD / current', 'kq.done': 'Completion', 'kq.trend': 'Trend', 'kq.q': 'Q{q}', 'kq.q4': 'Q4 (in progress)',
+    'kq.l1': 'Met / exceeded (≥ 100%)', 'kq.l2': 'Nearly met (85–99%)', 'kq.l3': 'Needs effort (70–84%)', 'kq.l4': 'Not met (< 70%)',
+    'kq.detail': 'Quarter detail', 'kq.lower': 'lower is better', 'kq.area.all': 'All areas', 'kq.area.dt': 'Academic & Student affairs', 'kq.area.kh': 'Research & Industry',
+    'kq.n': '{n} indicators', 'kq.focus': 'Focus areas', 'kq.good': 'Highlights',
+  },
+});
+App.kpiBoard = function (el, u) {
+  const t = App.t, esc = App.esc, D = App.D, C = App.calc, ch = App.ui.chart;
+  // giá trị hiện tại từ dữ liệu ứng dụng
+  const lect = D.staff.filter((s) => s.loai === 'khoa' && ['TK', 'PTK', 'TBM', 'GV'].includes(s.vi_tri));
+  const res = D.staff.filter((s) => s.loai === 'khoa' && ['TK', 'PTK', 'TBM', 'GV', 'NCV'].includes(s.vi_tri));
+  const teachAvg = lect.reduce((a, s) => a + Math.min(150, C.yearTeaching(s.ma_cb, '2025-2026').pct), 0) / lect.length;
+  const resDone = res.filter((s) => C.yearResearch(s.ma_cb, '2025-2026').pct >= 100).length / res.length * 100;
+  const fin = App.requests().filter((r) => r.trang_thai === 'hoan_thanh');
+  const sla = fin.length && App.proc && App.proc.withinSla ? fin.filter((r) => App.proc.withinSla(r)).length / fin.length * 100 : 92;
+  const ready = D.equipment.filter((e) => /Sẵn sàng|Đang sử dụng/.test(e.tinh_trang)).length / D.equipment.length * 100;
+  const q12 = D.papers.filter((p) => p.nam === 2026 && ['Q1', 'Q2'].includes(p.xep_hang)).length;
+  // kind: rate (giá trị mỗi quý so với mục tiêu) | count (cộng dồn so với mục tiêu năm); low: càng thấp càng tốt
+  const K = [
+    { k: 'teach', vi: 'Hoàn thành giờ chuẩn giảng dạy toàn Khoa', en: 'Faculty teaching-hour completion', unit: '%', kind: 'rate', target: 100, area: 'dt', now: teachAvg },
+    { k: 'res', vi: 'Tỷ lệ GV/NCV đạt định mức NCKH', en: 'Staff meeting research quota', unit: '%', kind: 'rate', target: 80, area: 'kh', now: resDone },
+    { k: 'q12', vi: 'Bài báo Q1/Q2', en: 'Q1/Q2 papers', unit: App.lang === 'vi' ? 'bài' : 'papers', kind: 'count', target: 6, area: 'kh', now: q12 },
+    { k: 'proj', vi: 'Đề tài mới được phê duyệt', en: 'New funded projects', unit: App.lang === 'vi' ? 'đề tài' : 'projects', kind: 'count', target: 5, area: 'kh' },
+    { k: 'mou', vi: 'Hợp tác doanh nghiệp (MOU/hợp đồng)', en: 'Industry agreements (MOU/contracts)', unit: App.lang === 'vi' ? 'văn bản' : 'agreements', kind: 'count', target: 6, area: 'kh' },
+    { k: 'lab', vi: 'Thiết bị PTN sẵn sàng hoạt động', en: 'Lab equipment availability', unit: '%', kind: 'rate', target: 90, area: 'kh', now: ready },
+    { k: 'sla', vi: 'Hồ sơ quy trình xử lý đúng hạn (SLA)', en: 'e-Process requests within SLA', unit: '%', kind: 'rate', target: 95, area: 'all', now: sla },
+    { k: 'warn', vi: 'SV bị cảnh báo học vụ', en: 'Students under academic warning', unit: '%', kind: 'rate', target: 10, low: true, area: 'dt' },   // 7 SV mẫu không đại diện toàn Khoa → giả lập
+    { k: 'ontime', vi: 'Học phần nộp đề thi, điểm đúng hạn', en: 'Courses with exams/grades on time', unit: '%', kind: 'rate', target: 98, area: 'dt' },
+    { k: 'adm', vi: 'Tuyển sinh đạt chỉ tiêu', en: 'Admission target achieved', unit: '%', kind: 'rate', target: 100, area: 'dt' },
+    { k: 'sat', vi: 'Mức hài lòng của người học', en: 'Student satisfaction', unit: '/5', kind: 'rate', target: 4.0, area: 'dt' },
+  ];
+  let rnd = 20260422;
+  const R = () => ((rnd = (rnd * 1103515245 + 12345) % 2147483648) / 2147483648);
+  K.forEach((k) => {
+    // Q1–Q3 đã khoá sổ; Q4 tính đến 22/10/2026
+    if (k.kind === 'count') {
+      const total = k.now != null ? k.now : Math.round(k.target * (0.6 + R() * 0.5));
+      const w = [0.22 + R() * 0.1, 0.25 + R() * 0.1, 0.28 + R() * 0.12];
+      const s = w.reduce((a, b) => a + b, 0) + 0.12;
+      let acc = 0;
+      k.q = w.map((x) => { const v = Math.round(total * x / s); acc += v; return v; });
+      k.q.push(Math.max(0, total - acc));
+    } else {
+      const base = k.now != null ? k.now : (k.low ? k.target * (0.8 + R() * 0.5) : k.target * (0.86 + R() * 0.14));
+      const step = (k.low ? -1 : 1) * k.target * (0.015 + R() * 0.03);
+      k.q = [0, 1, 2, 3].map((i) => {
+        const v = base - step * (3 - i) + (R() - 0.5) * k.target * 0.04;
+        return Math.round((k.unit === '/5' ? Math.min(5, v) : Math.max(0, Math.min(k.low ? 100 : 130, v))) * 10) / 10;
+      });
+      if (k.now != null) k.q[3] = Math.round(k.now * 10) / 10;
+    }
+  });
+  const pct = (k, qi) => {
+    if (k.kind === 'count') {
+      const cum = k.q.slice(0, qi + 1).reduce((a, b) => a + b, 0);
+      const tgt = k.target * (qi === 3 ? 0.83 : (qi + 1) / 4);   // Q4 mới qua 22/10 ≈ 83% năm
+      return cum / tgt * 100;
+    }
+    const v = k.q[qi];
+    return k.low ? (v <= 0 ? 130 : Math.min(130, k.target / v * 100)) : v / k.target * 100;
+  };
+  const lvl = (p) => (p >= 100 ? 1 : p >= 85 ? 2 : p >= 70 ? 3 : 4);
+  const COL = { 1: ['#E6F4EC', '#2F855A'], 2: ['#E6F4FB', '#0E6E96'], 3: ['#FDF3E1', '#B7791F'], 4: ['#FDECEC', '#C53030'] };
+  const areaOf = u.vi_tri === 'PTK' && u.role === 'PTK' ? (u.phu_trach === 'dao_tao_sv' ? 'dt' : 'kh') : 'all';
+  let area = areaOf, sel = 3;
+  const fmt = (k, v) => (k.unit === '%' ? App.fmtNum(v, 1) + '%' : k.unit === '/5' ? App.fmtNum(v, 2) + '/5' : App.fmtNum(v, 0) + ' ' + k.unit);
+
+  function draw() {
+    const ks = K.filter((k) => area === 'all' || k.area === area || k.area === 'all');
+    const qAvg = [0, 1, 2, 3].map((qi) => ks.reduce((a, k) => a + Math.min(130, pct(k, qi)), 0) / ks.length);
+    const ytd = qAvg[3];
+    const dist = [1, 2, 3, 4].map((l) => ks.filter((k) => lvl(pct(k, sel)) === l).length);
+    const qLab = (i) => (i === 3 ? t('kq.q4') : t('kq.q', { q: i + 1 }));
+    const spark = (k) => {
+      const ps = k.q.map((_, i) => Math.min(130, pct(k, i)));
+      const pts = ps.map((p, i) => (6 + i * 22) + ',' + (30 - p / 130 * 26).toFixed(1)).join(' ');
+      return `<svg viewBox="0 0 80 32" width="80" height="32"><line x1="0" x2="80" y1="${30 - 100 / 130 * 26}" y2="${30 - 100 / 130 * 26}" stroke="#E3E6F0" stroke-dasharray="3 2"/><polyline points="${pts}" fill="none" stroke="#2E3191" stroke-width="2"/>${ps.map((p, i) => `<circle cx="${6 + i * 22}" cy="${(30 - p / 130 * 26).toFixed(1)}" r="2.5" fill="${COL[lvl(p)][1]}"/>`).join('')}</svg>`;
+    };
+    const ranked = ks.map((k) => ({ k, p: pct(k, sel) })).sort((a, b) => a.p - b.p);
+    el.innerHTML = `<div class="card"><div class="card-h"><h3>${t('kq.title')}</h3><div class="row">
+        ${u.role === 'PTK' ? '' : `<select data-area aria-label="area"><option value="all">${t('kq.area.all')}</option><option value="dt">${t('kq.area.dt')}</option><option value="kh">${t('kq.area.kh')}</option></select>`}
+        ${App.ui.badge(t('kq.sim'), 'warn')}</div></div>
+      <div class="grid g3">
+        <div><h4>${t('kq.ytd')}</h4>${ch.donut(dist.map((n, i) => ({ l: t('kq.l' + (i + 1)), v: n, c: COL[i + 1][1] })), { center: Math.round(ytd) + '%', sub: 'Q' + (sel + 1) + '/2026', label: t('kq.ytd') })}</div>
+        <div><h4>${t('kq.byq')}</h4>${ch.bars(qAvg.map((v, i) => ({ l: 'Q' + (i + 1), v: Math.round(v), c: COL[lvl(v)][1], ref: 100 })), { w: 300, h: 150, max: 130, label: t('kq.byq') })}</div>
+        <div><h4>${t('kq.detail')}: ${qLab(sel)}</h4>
+          <div class="small" style="font-weight:700;color:var(--bad);margin:4px 0">${t('kq.focus')}</div>
+          ${App.ui.chart.hbars(ranked.slice(0, 3).map((r) => ({ l: App.L(r.k), v: Math.min(130, r.p), ref: 100, txt: Math.round(r.p) + '%', c: COL[lvl(r.p)][1] })), { max: 130 })}
+          <div class="small" style="font-weight:700;color:var(--ok);margin:10px 0 4px">${t('kq.good')}</div>
+          ${App.ui.chart.hbars(ranked.slice(-3).reverse().map((r) => ({ l: App.L(r.k), v: Math.min(130, r.p), ref: 100, txt: Math.round(r.p) + '%', c: COL[lvl(r.p)][1] })), { max: 130 })}</div>
+      </div>
+      <h4 style="margin-top:14px">${t('kq.heat')} <span class="muted small">· ${t('kq.n', { n: ks.length })}</span></h4>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>${t('kq.kpi')}</th><th class="num">${t('kq.target')}</th>
+        ${[0, 1, 2, 3].map((i) => `<th class="c" style="cursor:pointer;${i === sel ? 'background:#1C9ACC' : ''}" data-q="${i}">${qLab(i)}</th>`).join('')}
+        <th class="c">${t('kq.trend')}</th></tr></thead><tbody>
+        ${ks.map((k) => `<tr><td><b>${esc(App.L(k))}</b>${k.low ? ` <span class="muted small">(${t('kq.lower')})</span>` : ''}</td>
+          <td class="num">${k.low ? '≤ ' : ''}${fmt(k, k.target)}</td>
+          ${k.q.map((v, i) => { const p = pct(k, i); const c = COL[lvl(p)]; const shown = k.kind === 'count' ? k.q.slice(0, i + 1).reduce((a, b) => a + b, 0) : v; return `<td class="c" style="background:${c[0]};color:${c[1]};font-weight:700;${i === sel ? 'outline:2px solid #1C9ACC;outline-offset:-2px' : ''}">${fmt(k, shown)}<div class="small" style="font-weight:600">${Math.round(p)}%</div></td>`; }).join('')}
+          <td class="c">${spark(k)}</td></tr>`).join('')}
+      </tbody></table></div>
+      <div class="row small muted" style="margin-top:8px">${[1, 2, 3, 4].map((l) => `<span class="chip" style="background:${COL[l][0]};color:${COL[l][1]}">${t('kq.l' + l)}</span>`).join('')}</div></div>`;
+    const a = el.querySelector('[data-area]');
+    if (a) { a.value = area; a.onchange = () => { area = a.value; draw(); }; }
+    el.querySelectorAll('[data-q]').forEach((th) => (th.onclick = () => { sel = +th.dataset.q; draw(); }));
+  }
+  draw();
+};

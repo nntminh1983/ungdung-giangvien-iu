@@ -1,5 +1,6 @@
 /* Hỗ trợ ra quyết định (TK: mọi lĩnh vực; PTK: lĩnh vực được phân công – ABAC A3; BGH: toàn bộ).
-   6 góc nhìn: cân bằng tải giảng dạy, dự báo nhân lực, người học, quy trình & SLA, NCKH, PTN & đầu tư.
+   7 góc nhìn: cân bằng tải giảng dạy, dự báo nhân lực, người học, quy trình & SLA, NCKH, năng lực & đề xuất nhóm nghiên cứu
+   (TK, BGH, PTK lĩnh vực KHCN–DN), PTN & đầu tư.
    Mỗi góc nhìn kết thúc bằng các khuyến nghị tự sinh từ số liệu. Mọi ngưỡng do ứng dụng đặt đều ghi rõ "giả định". */
 App.addI18n({
   vi: {
@@ -73,6 +74,39 @@ App.addI18n({
     'dc.l.r2': '{n} thiết bị quá hạn hoặc sắp đến hạn hiệu chuẩn trong 90 ngày; lập kế hoạch hiệu chuẩn gộp để tiết kiệm chi phí.',
     'dc.l.r3': 'Thiết bị có điểm ưu tiên đầu tư cao nhất: {e} ({s} điểm).',
     'dc.l.r4': 'Đang mở {n} đề xuất với tổng dự toán {b} triệu đồng; đề xuất chiến lược cần trình BGH theo kế hoạch đầu tư trung hạn.',
+    'dc.v.team': 'Năng lực & đề xuất nhóm nghiên cứu',
+    'dc.t.th.wl': 'Truyền thông không dây & 6G', 'dc.t.th.ant': 'Anten – siêu cao tần', 'dc.t.th.iot': 'IoT & hệ thống nhúng', 'dc.t.th.ai': 'AI/Học máy cho tín hiệu',
+    'dc.t.th.sp': 'Xử lý tín hiệu & radar', 'dc.t.th.cv': 'Xử lý ảnh & thị giác máy', 'dc.t.th.ctl': 'Điều khiển tiên tiến', 'dc.t.th.pwr': 'Năng lượng – lưới điện siêu nhỏ',
+    'dc.t.th.rob': 'Robot & tự động hoá', 'dc.t.th.dt': 'Bản sao số & sản xuất thông minh', 'dc.t.th.semi': 'Bán dẫn – vi mạch', 'dc.t.th.sens': 'Cảm biến & đo lường',
+    'dc.t.sh.wl': '6G', 'dc.t.sh.ant': 'Anten', 'dc.t.sh.iot': 'IoT', 'dc.t.sh.ai': 'AI/ML', 'dc.t.sh.sp': 'XLTH', 'dc.t.sh.cv': 'Ảnh', 'dc.t.sh.ctl': 'ĐK',
+    'dc.t.sh.pwr': 'NL', 'dc.t.sh.rob': 'Robot', 'dc.t.sh.dt': 'BSS', 'dc.t.sh.semi': 'Vi mạch', 'dc.t.sh.sens': 'C.biến',
+    'dc.t.k.n': 'Nhà khoa học trong phạm vi', 'dc.t.k.q12': 'Bài Q1/Q2 (3 năm)', 'dc.t.k.pi': 'Đề tài đang chủ nhiệm', 'dc.t.k.cap': 'Còn quỹ thời gian',
+    'dc.t.k.capsub': 'giờ giảng ≤ 130% định mức',
+    'dc.t.map': 'Bản đồ năng lực theo chủ đề', 'dc.t.map.note': 'Ô càng đậm = năng lực càng mạnh (điểm chủ đề = chuyên ngành 1,5 + bài báo theo hạng × hệ số năm + đề tài; đồng tác giả × 0,7; bài > 3 năm × 0,5).',
+    'dc.t.rank': 'Xếp hạng năng lực NCKH', 'dc.t.sortby': 'Sắp theo', 'dc.t.sort.all': 'Điểm tổng hợp',
+    'dc.t.c.name': 'Cán bộ', 'dc.t.c.score': 'Điểm NL', 'dc.t.c.top': 'Chủ đề mạnh', 'dc.t.c.pub': 'Công bố 3 năm', 'dc.t.c.pi': 'Chủ nhiệm', 'dc.t.c.rs': '% định mức NCKH', 'dc.t.c.ready': 'Sẵn sàng',
+    'dc.t.pubsub': '{q} Q1/Q2', 'dc.t.pisub': '{a} đang thực hiện',
+    'dc.t.r.ok': 'Sẵn sàng', 'dc.t.r.mid': 'Vừa phải', 'dc.t.r.bad': 'Hạn chế thời gian', 'dc.t.r.tip': 'Giờ giảng 2025–2026: {p} định mức',
+    'dc.t.formula': 'Điểm NL (0–100, chuẩn hoá theo người cao nhất) = công bố 3 năm (Q1 3; Q2 2; Q3/Q4 1; hội nghị 0,5) + đề tài (chủ nhiệm 2; thành viên 1; đã nghiệm thu +0,5) + học hàm/học vị (PGS 3; TS 2; ThS 0,5) + mức hoàn thành định mức NCKH 2025–2026 (tối đa 3). Sẵn sàng: giờ giảng < 100% định mức; vừa phải 100–130%; > 130% = hạn chế thời gian. Trọng số và ngưỡng do ứng dụng đề xuất (giả định).',
+    'dc.t.build': 'Đề xuất nhóm cho đề tài nhóm / đề tài chung', 'dc.t.call': 'Đợt kêu gọi', 'dc.t.custom': 'Tự chọn chủ đề',
+    'dc.t.pick': 'Chọn chủ đề cần phủ', 'dc.t.mix': 'Ưu tiên liên ngành (hai Bộ môn)',
+    'dc.t.req': 'Chủ đề yêu cầu', 'dc.t.budget': 'Kinh phí', 'dc.t.size': 'Quy mô nhóm', 'dc.t.dl': 'Hạn nộp', 'dc.t.days': 'còn {n} ngày', 'dc.t.elig': 'Điều kiện chủ nhiệm',
+    'dc.t.e.ts': 'Chủ nhiệm có học vị Tiến sĩ', 'dc.t.e.q': 'Có ≥ {n} bài Q1/Q2 trong 3 năm', 'dc.t.e.act': 'Đang chủ nhiệm ≤ {n} đề tài', 'dc.t.e.inter': 'Thành viên thuộc ≥ 2 Bộ môn',
+    'dc.t.mil': '{n} triệu đồng', 'dc.t.ppl': '{n} người', 'dc.t.interb': 'Liên ngành',
+    'dc.t.team': 'Đội hình đề xuất', 'dc.t.tscore': 'Điểm đội hình', 'dc.t.cov': 'Độ phủ chủ đề',
+    'dc.t.role.pi': 'Chủ nhiệm', 'dc.t.role.m': 'Thành viên chính', 'dc.t.role.y': 'Thành viên trẻ (đào tạo)',
+    'dc.t.why.th': 'Mạnh: {l}', 'dc.t.why.q': '{n} bài Q1/Q2 trong 3 năm', 'dc.t.why.pi': 'Đang chủ nhiệm {n} đề tài', 'dc.t.why.done': 'Đã nghiệm thu {n} đề tài',
+    'dc.t.why.gap': 'Bổ sung chủ đề còn thiếu: {l}', 'dc.t.why.dept': 'Khác Bộ môn → tăng tính liên ngành', 'dc.t.why.ready': 'Giờ giảng {p} định mức → có quỹ thời gian',
+    'dc.t.why.busy': 'Giờ giảng {p} định mức → cần giảm tải nếu tham gia', 'dc.t.why.young': 'Cán bộ trẻ ({d}) – đào tạo kế cận', 'dc.t.why.ts': 'Học vị TS',
+    'dc.t.noelig': 'Không có ứng viên đáp ứng đủ điều kiện chủ nhiệm; đề xuất tạm người phù hợp nhất – cần xin ý kiến cơ quan quản lý đề tài.',
+    'dc.t.alt': 'Phương án thay thế', 'dc.t.alt.for': 'thay cho', 'dc.t.fit': 'Độ phù hợp',
+    'dc.t.send': 'Gửi đề xuất tới thành viên', 'dc.t.sent': 'Đã gửi đề xuất tới {n} thành viên.', 'dc.t.create': 'Tạo hồ sơ đăng ký đề tài',
+    'dc.t.created': 'Đã tạo hồ sơ nháp {id} theo QT-ĐHQT-KH-01.', 'dc.t.noproc': 'Mô-đun quy trình chưa sẵn sàng.', 'dc.t.needth': 'Chọn ít nhất một chủ đề.',
+    'dc.t.callnote': 'Các đợt kêu gọi là dữ liệu mô phỏng; điều kiện chủ nhiệm minh hoạ theo thông lệ quỹ (giả định) – đối chiếu thông báo chính thức trước khi nộp.',
+    'dc.t.r1': 'Chủ đề yếu nhất: {l} – chỉ {n} người có năng lực rõ; cân nhắc tuyển dụng hoặc hợp tác ngoài Khoa.',
+    'dc.t.r2': '{n} cán bộ năng lực NCKH cao nhưng quá tải giảng dạy ({l}); giảm tải để tham gia đề tài nhóm.',
+    'dc.t.r3': 'Ưu tiên đợt "{c}": đội hình đạt {s} điểm, phủ {k}/{m} chủ đề yêu cầu.',
+    'dc.t.r4': '{n} cán bộ chưa có công bố trong 3 năm ({l}); ghép vào nhóm của chủ nhiệm mạnh để kèm cặp.',
   },
   en: {
     'dc.sub': 'Faculty-wide analytics to support management decisions – simulated data; thresholds and assumptions are stated in each view.',
@@ -145,13 +179,46 @@ App.addI18n({
     'dc.l.r2': '{n} items are overdue or due for calibration within 90 days; bundle calibrations to save cost.',
     'dc.l.r3': 'Highest investment priority: {e} ({s} points).',
     'dc.l.r4': '{n} open proposals totalling {b} million VND; strategic proposals must go to the Rector board within the medium-term investment plan.',
+    'dc.v.team': 'Expertise & team recommendations',
+    'dc.t.th.wl': 'Wireless communications & 6G', 'dc.t.th.ant': 'Antennas & microwave', 'dc.t.th.iot': 'IoT & embedded systems', 'dc.t.th.ai': 'AI/ML for signals',
+    'dc.t.th.sp': 'Signal processing & radar', 'dc.t.th.cv': 'Image processing & vision', 'dc.t.th.ctl': 'Advanced control', 'dc.t.th.pwr': 'Energy & microgrids',
+    'dc.t.th.rob': 'Robotics & automation', 'dc.t.th.dt': 'Digital twin & smart manufacturing', 'dc.t.th.semi': 'Semiconductors & ICs', 'dc.t.th.sens': 'Sensing & measurement',
+    'dc.t.sh.wl': '6G', 'dc.t.sh.ant': 'Ant.', 'dc.t.sh.iot': 'IoT', 'dc.t.sh.ai': 'AI/ML', 'dc.t.sh.sp': 'DSP', 'dc.t.sh.cv': 'Vision', 'dc.t.sh.ctl': 'Ctrl',
+    'dc.t.sh.pwr': 'Energy', 'dc.t.sh.rob': 'Robot', 'dc.t.sh.dt': 'DTwin', 'dc.t.sh.semi': 'IC', 'dc.t.sh.sens': 'Sensing',
+    'dc.t.k.n': 'Researchers in scope', 'dc.t.k.q12': 'Q1/Q2 papers (3 yrs)', 'dc.t.k.pi': 'Active PI projects', 'dc.t.k.cap': 'Have time capacity',
+    'dc.t.k.capsub': 'teaching ≤ 130% of quota',
+    'dc.t.map': 'Expertise map by theme', 'dc.t.map.note': 'Darker cell = stronger expertise (theme score = field 1.5 + papers by quartile × recency + projects; co-author × 0.7; papers > 3 yrs × 0.5).',
+    'dc.t.rank': 'Research capability ranking', 'dc.t.sortby': 'Sort by', 'dc.t.sort.all': 'Overall score',
+    'dc.t.c.name': 'Staff', 'dc.t.c.score': 'Score', 'dc.t.c.top': 'Strong themes', 'dc.t.c.pub': 'Papers 3 yrs', 'dc.t.c.pi': 'PI', 'dc.t.c.rs': 'Research quota %', 'dc.t.c.ready': 'Availability',
+    'dc.t.pubsub': '{q} Q1/Q2', 'dc.t.pisub': '{a} ongoing',
+    'dc.t.r.ok': 'Available', 'dc.t.r.mid': 'Moderate', 'dc.t.r.bad': 'Limited time', 'dc.t.r.tip': 'Teaching 2025–2026: {p} of quota',
+    'dc.t.formula': 'Score (0–100, normalised to the top person) = papers in 3 yrs (Q1 3; Q2 2; Q3/Q4 1; conference 0.5) + projects (PI 2; member 1; accepted +0.5) + rank/degree (Assoc. Prof. 3; PhD 2; MSc 0.5) + 2025–2026 research-quota completion (max 3). Availability: teaching < 100% of quota; moderate 100–130%; > 130% = limited time. Weights and thresholds proposed by the app (assumption).',
+    'dc.t.build': 'Team recommendation for group / joint projects', 'dc.t.call': 'Call', 'dc.t.custom': 'Custom themes',
+    'dc.t.pick': 'Pick themes to cover', 'dc.t.mix': 'Prefer interdisciplinary (two departments)',
+    'dc.t.req': 'Required themes', 'dc.t.budget': 'Budget', 'dc.t.size': 'Team size', 'dc.t.dl': 'Deadline', 'dc.t.days': '{n} days left', 'dc.t.elig': 'PI eligibility',
+    'dc.t.e.ts': 'PI holds a PhD', 'dc.t.e.q': '≥ {n} Q1/Q2 papers in 3 years', 'dc.t.e.act': 'Currently PI of ≤ {n} projects', 'dc.t.e.inter': 'Members from ≥ 2 departments',
+    'dc.t.mil': '{n} million VND', 'dc.t.ppl': '{n} people', 'dc.t.interb': 'Interdisciplinary',
+    'dc.t.team': 'Recommended team', 'dc.t.tscore': 'Team score', 'dc.t.cov': 'Theme coverage',
+    'dc.t.role.pi': 'Principal investigator', 'dc.t.role.m': 'Key member', 'dc.t.role.y': 'Young member (training)',
+    'dc.t.why.th': 'Strong in: {l}', 'dc.t.why.q': '{n} Q1/Q2 papers in 3 years', 'dc.t.why.pi': 'Currently PI of {n} projects', 'dc.t.why.done': '{n} projects accepted',
+    'dc.t.why.gap': 'Fills missing themes: {l}', 'dc.t.why.dept': 'Other department → interdisciplinary', 'dc.t.why.ready': 'Teaching at {p} of quota → has time',
+    'dc.t.why.busy': 'Teaching at {p} of quota → needs load relief to join', 'dc.t.why.young': 'Early-career staff ({d}) – capacity building', 'dc.t.why.ts': 'PhD holder',
+    'dc.t.noelig': 'No candidate meets every PI requirement; the best-fitting person is proposed provisionally – consult the funding agency.',
+    'dc.t.alt': 'Alternatives', 'dc.t.alt.for': 'instead of', 'dc.t.fit': 'Fit',
+    'dc.t.send': 'Send proposal to members', 'dc.t.sent': 'Proposal sent to {n} members.', 'dc.t.create': 'Create project application',
+    'dc.t.created': 'Draft request {id} created under QT-ĐHQT-KH-01.', 'dc.t.noproc': 'Process module not available.', 'dc.t.needth': 'Select at least one theme.',
+    'dc.t.callnote': 'Calls are simulated; PI requirements illustrate usual funder practice (assumption) – check the official announcement before applying.',
+    'dc.t.r1': 'Weakest theme: {l} – only {n} people with clear expertise; consider hiring or external partnerships.',
+    'dc.t.r2': '{n} staff with high research capability are overloaded with teaching ({l}); reduce their load so they can join group projects.',
+    'dc.t.r3': 'Prioritise "{c}": the recommended team scores {s} and covers {k}/{m} required themes.',
+    'dc.t.r4': '{n} staff have no publications in 3 years ({l}); attach them to teams led by strong PIs for mentoring.',
   },
 });
 (function () {
   const t = App.t, esc = App.esc, D = App.D, C = App.calc;
   const YP = '2025-2026', YC = '2026-2027';
   const TEACH_POS = ['TK', 'PTK', 'TBM', 'GV'];   // TG: giờ trợ giảng không ghi nhận trong dữ liệu lớp học phần
-  const VIEWS = { all: ['bal', 'fc', 'sv', 'sla', 'rs', 'lab'], dao_tao_sv: ['bal', 'fc', 'sv', 'sla'], khcn_dn: ['rs', 'lab', 'sla'] };
+  const VIEWS = { all: ['bal', 'fc', 'sv', 'sla', 'rs', 'team', 'lab'], dao_tao_sv: ['bal', 'fc', 'sv', 'sla'], khcn_dn: ['rs', 'team', 'lab', 'sla'] };
   const GROUPS = { dao_tao_sv: ['GD', 'HL', 'NH'], khcn_dn: ['KH', 'PTN'] };
   const COL = { over: '#C53030', under: '#B7791F', ok: '#2E3191', red: '#C53030', orange: '#DD6B20', yellow: '#D69E2E', green: '#2F855A' };
   const r1 = (x) => Math.round(x * 10) / 10;
@@ -512,7 +579,234 @@ App.addI18n({
       ], props)}</div>${recCard(recs)}`;
   }
 
-  const RENDER = { bal: viewBal, fc: viewFc, sv: viewSv, sla: viewSla, rs: viewRs, lab: viewLab };
+  /* ------------------------------------------------------------ năng lực & đề xuất nhóm nghiên cứu */
+  const TH = {   // chủ đề nghiên cứu – từ khoá VN + EN (so khớp trên chữ thường)
+    wl: ['6g', '5g', 'wireless', 'uav', 'reconfigurable intelligent', 'semantic communication', 'channel', 'không dây', 'di động', 'viễn thông', 'truyền thông', 'kênh truyền', 'bề mặt thông minh'],
+    ant: ['antenna', 'millimeter-wave', 'metasurface', 'microwave', 'fmcw', 'anten', 'siêu cao tần', 'mảng pha', 'bộ thu'],
+    iot: ['\\biot\\b', 'lora', 'at the edge', 'smart campus', 'embedded', 'nhúng', 'giám sát môi trường'],
+    ai: ['deep learning', 'federated', 'reinforcement learning', 'machine learning', 'classification', 'neural', 'học sâu', 'học máy', 'trí tuệ nhân tạo'],
+    sp: ['signal', 'radar', 'channel estimation', 'tín hiệu', 'ước lượng'],
+    cv: ['vision', 'image', 'camera', 'thị giác máy', 'xử lý ảnh', 'hình ảnh'],
+    ctl: ['control', 'sliding mode', 'predictive', 'điều khiển'],
+    pwr: ['microgrid', 'wind turbine', 'battery', 'state-of-charge', 'energy', 'lưới điện', 'pin xe', 'xe điện', 'năng lượng', 'kỹ thuật điện(?! tử)'],
+    rob: ['robot', 'quadrotor', 'manipulator', '\\bplc', 'automation', 'tự động ho[áa]', 'cơ điện tử'],
+    dt: ['digital twin', 'smart factory', 'process control', 'bản sao số', 'nhà máy thông minh', 'dây chuyền', 'giám sát chất lượng'],
+    semi: ['semiconductor', 'vlsi', 'fpga', '\\bchip', 'integrated circuit', 'bán dẫn', 'vi mạch', '(?<!cơ )điện tử(?! –)', 'chi phí thấp'],
+    sens: ['sensor', 'monitoring', 'measurement', 'estimation', 'cảm biến', 'đo lường', 'giám sát', 'radar'],
+  };
+  const THK = Object.keys(TH);
+  const THR = {}; THK.forEach((k) => (THR[k] = new RegExp(TH[k].join('|'), 'u')));
+  const thMatch = (txt) => { const s = String(txt || '').toLowerCase(); return THK.filter((k) => THR[k].test(s)); };
+  const CALLS = [
+    { k: 'c1', ten_vi: 'Đề tài cấp ĐHQG-HCM loại B – Nhóm nghiên cứu mạnh 2027', ten_en: 'VNU-HCM Type-B project – Strong research groups 2027', cap: 'Cấp ĐHQG-HCM loại B', th: ['wl', 'ant', 'ai'], budget: 800, size: 5, minQ: 1, maxAct: 1, inter: false, dl: '2026-12-15' },
+    { k: 'c2', ten_vi: 'NAFOSTED – Nghiên cứu cơ bản 2027', ten_en: 'NAFOSTED – Basic research 2027', cap: 'NAFOSTED', th: ['wl', 'sp', 'ai'], budget: 1200, size: 4, minQ: 2, maxAct: 1, inter: false, dl: '2027-03-31' },
+    { k: 'c3', ten_vi: 'Sở KH&CN TP.HCM – Chuyển đổi số đô thị thông minh', ten_en: 'HCMC DOST – Digital transformation for smart cities', cap: 'Sở KH&CN TP.HCM', th: ['iot', 'sens', 'ai', 'cv'], budget: 1500, size: 6, minQ: 1, maxAct: 1, inter: true, dl: '2026-11-30' },
+    { k: 'c4', ten_vi: 'Chương trình hợp tác doanh nghiệp bán dẫn', ten_en: 'Semiconductor industry partnership programme', cap: 'Hợp tác doanh nghiệp', th: ['semi', 'ant', 'iot'], budget: 600, size: 4, minQ: 0, maxAct: 2, inter: false, dl: '2027-01-15' },
+    { k: 'c5', ten_vi: 'Đề tài liên ngành ĐTVT–ĐKTĐH: Nhà máy thông minh', ten_en: 'Interdisciplinary E&T–Control project: Smart factory', cap: 'Cấp cơ sở (Trường)', th: ['rob', 'dt', 'iot', 'ctl', 'wl'], budget: 900, size: 6, minQ: 1, maxAct: 1, inter: true, dl: '2027-02-28' },
+    { k: 'c6', ten_vi: 'Đề tài trọng điểm cấp Trường – Năng lượng tái tạo & lưới điện siêu nhỏ', ten_en: 'IU key project – Renewable energy & microgrids', cap: 'Cấp cơ sở (Trường)', th: ['pwr', 'ctl', 'ai'], budget: 300, size: 4, minQ: 0, maxAct: 2, inter: false, dl: '2026-12-31' },
+  ];
+  const tst = { call: 'c1', custom: ['iot', 'ai'], mix: true, sort: 'all' };
+  const RES_POS = ['TK', 'PTK', 'TBM', 'GV', 'NCV'];
+  const QW = { Q1: 3, Q2: 2, Q3: 1, Q4: 1 };
+  const thName = (k) => t('dc.t.th.' + k), thShort = (k) => t('dc.t.sh.' + k);
+
+  function profiles() {
+    const Y = App.today.getFullYear();
+    const list = App.staffList().filter((s) => s.loai === 'khoa' && (RES_POS.includes(s.vi_tri) || s.vi_tri === 'TG') && App.acl.inScope(s));
+    const P = list.map((s) => {
+      const th = {}; THK.forEach((k) => (th[k] = 0));
+      thMatch(s.chuyen_nganh).forEach((k) => (th[k] += 1.5));
+      const pp = D.papers.filter((p) => p.ma_cb === s.ma_cb || (p.dong_tac_gia || []).includes(s.ma_cb));
+      let pubW = 0, pub3 = 0, q12 = 0;
+      pp.forEach((p) => {
+        const w = (p.loai === 'conf' ? 0.5 : QW[p.xep_hang] || 0.5) * (p.ma_cb === s.ma_cb ? 1 : 0.7);
+        const recent = p.nam >= Y - 2;
+        thMatch(p.ten).forEach((k) => (th[k] += w * (recent ? 1 : 0.5)));
+        if (recent) { pubW += w; pub3++; if (p.loai === 'journal' && /Q[12]/.test(p.xep_hang)) q12++; }
+      });
+      const pr = D.projects.filter((p) => p.ma_cb === s.ma_cb);
+      let prW = 0;
+      pr.forEach((p) => { const w = (p.vai_tro === 'Chủ nhiệm' ? 2 : 1) + (p.trang_thai === 'Đã nghiệm thu' ? 0.5 : 0); prW += w; thMatch(p.ten).forEach((k) => (th[k] += w)); });
+      const piAll = pr.filter((p) => p.vai_tro === 'Chủ nhiệm');
+      const act = piAll.filter((p) => p.trang_thai !== 'Đã nghiệm thu').length, done = pr.filter((p) => p.trang_thai === 'Đã nghiệm thu').length;
+      const deg = s.hoc_ham === 'PGS' || s.hoc_ham === 'GS' ? 3 : s.hoc_vi === 'TS' ? 2 : s.hoc_vi === 'ThS' ? 0.5 : 0;
+      const yr = C.yearResearch(s.ma_cb, YP), rsPct = yr.norm > 0 ? yr.pct : null;
+      const yt = C.yearTeaching(s.ma_cb, YP), tn = yt.norm ? yt.norm.teach : 0;
+      const tPct = tn > 0 ? yt.total / tn * 100 : 0;
+      const ready = tPct > 130 ? 'bad' : tPct >= 100 ? 'mid' : 'ok';
+      const raw = pubW + prW + deg + Math.min(rsPct || 0, 150) / 50;
+      return { s, th, pub3, q12, pi: piAll.length, act, done, rsPct, tPct, ready, raw, young: s.hoc_vi !== 'TS', main: RES_POS.includes(s.vi_tri) };
+    });
+    const mx = Math.max(1, ...P.map((p) => p.raw));
+    const thMax = {}; THK.forEach((k) => (thMax[k] = Math.max(1, ...P.map((p) => p.th[k]))));
+    P.forEach((p) => { p.score = Math.round(p.raw / mx * 100); p.n = {}; THK.forEach((k) => (p.n[k] = p.th[k] / thMax[k])); p.top = THK.filter((k) => p.th[k] >= 1).sort((a, b) => p.th[b] - p.th[a]).slice(0, 3); });
+    return P;
+  }
+  const RV = { ok: 1, mid: 0.6, bad: 0.2 };
+  function buildTeam(P, cfg) {
+    const req = cfg.th, mix = cfg.inter;
+    const fit = (p) => sum(req, (k) => p.n[k]) / (req.length || 1);
+    const elig = (p) => ({ ts: p.s.hoc_vi === 'TS', q: p.q12 >= cfg.minQ, act: p.act <= cfg.maxAct });
+    const okAll = (p) => { const e = elig(p); return e.ts && e.q && e.act; };
+    const piVal = (p) => 0.6 * fit(p) + 0.3 * p.score / 100 + 0.1 * RV[p.ready];
+    const main = P.filter((p) => p.main);
+    const eligible = main.filter(okAll).sort((a, b) => piVal(b) - piVal(a));
+    const pi = eligible[0] || main.filter((p) => p.s.hoc_vi === 'TS').sort((a, b) => piVal(b) - piVal(a))[0];
+    if (!pi) return null;
+    const team = [{ p: pi, role: 'pi', gap: [] }];
+    const cov = {}; req.forEach((k) => (cov[k] = pi.th[k]));
+    const nMem = Math.max(2, Math.min(4, cfg.size - 2));
+    const memVal = (c) => {
+      const gainK = req.filter((k) => cov[k] < 1 && c.th[k] >= 1);
+      const g = sum(req, (k) => Math.max(0, c.n[k] - Math.min(1, cov[k] / 3)));
+      const depts = new Set(team.map((x) => x.p.s.bo_mon));
+      return { v: g + 0.6 * gainK.length + 0.25 * c.score / 100 + 0.2 * RV[c.ready] + (mix && !depts.has(c.s.bo_mon) ? 0.5 : 0), gainK };
+    };
+    const used = new Set([pi.s.ma_cb]);
+    for (let i = 0; i < nMem; i++) {
+      let best = null;
+      main.filter((c) => !used.has(c.s.ma_cb)).forEach((c) => { const m = memVal(c); if (!best || m.v > best.m.v) best = { c, m }; });
+      if (!best) break;
+      used.add(best.c.s.ma_cb); team.push({ p: best.c, role: 'm', gap: best.m.gainK, val: best.m.v });
+      req.forEach((k) => (cov[k] = Math.max(cov[k], best.c.th[k])));
+    }
+    const yPool = P.filter((c) => c.young && !used.has(c.s.ma_cb)).sort((a, b) => (fit(b) + 0.3 * RV[b.ready] + b.score / 200) - (fit(a) + 0.3 * RV[a.ready] + a.score / 200));
+    if (yPool[0]) { const y = yPool[0]; used.add(y.s.ma_cb); team.push({ p: y, role: 'y', gap: req.filter((k) => cov[k] < 1 && y.th[k] >= 1) }); req.forEach((k) => (cov[k] = Math.max(cov[k], y.th[k]))); }
+    const covered = req.filter((k) => cov[k] >= 1);
+    const deptsN = new Set(team.map((x) => x.p.s.bo_mon)).size;
+    const score = Math.round(100 * (0.5 * covered.length / (req.length || 1) + 0.3 * sum(team, (x) => x.p.score) / team.length / 100 + 0.2 * sum(team, (x) => RV[x.p.ready]) / team.length));
+    const alts = main.filter((c) => !used.has(c.s.ma_cb)).map((c) => ({ c, f: fit(c) })).filter((x) => x.f > 0).sort((a, b) => b.f - a.f).slice(0, 3)
+      .map((x) => { const sameRole = team.filter((m) => m.role === 'm').sort((a, b) => fit(a.p) - fit(b.p))[0]; return { c: x.c, f: x.f, for: sameRole ? sameRole.p.s : null }; });
+    return { team, pi, piOk: !!eligible[0], elig: elig(pi), cov, covered, deptsN, score, alts, fit };
+  }
+  const pctTxt = (x) => pctS(x || 0);
+  function chips(ks, hi) { return ks.map((k) => `<span class="chip" style="margin:1px 2px;${hi && hi.includes(k) ? 'background:#E6F4FA;border-color:#1C9ACC' : ''}" title="${esc(thName(k))}">${esc(thName(k))}</span>`).join('') || '<span class="muted">–</span>'; }
+  function readyBadge(p) { return `<span title="${esc(t('dc.t.r.tip', { p: pctTxt(p.tPct) }))}">${App.ui.badge(t('dc.t.r.' + p.ready), p.ready === 'ok' ? 'ok' : p.ready === 'mid' ? 'warn' : 'bad')}</span>`; }
+
+  function viewTeam(body) {
+    const P = profiles();
+    const R = P.filter((p) => p.main).sort((a, b) => b.score - a.score);
+    App.audit('XEM', 'Xem hồ sơ năng lực NCKH và đề xuất nhóm (Hỗ trợ ra quyết định)', '', 'Quản lý khoa học công nghệ');
+    const cell = (p, k) => { const v = p.n[k]; return `<td class="c" title="${esc(nm(p.s) + ' – ' + thName(k) + ': ' + App.fmtNum(p.th[k], 1))}" style="background:rgba(28,154,204,${(v * 0.9).toFixed(2)});color:${v > 0.55 ? '#fff' : '#2E3191'};font-size:12px;min-width:34px">${p.th[k] >= 0.5 ? App.fmtNum(p.th[k], 1) : ''}</td>`; };
+    const heat = `<div style="overflow-x:auto"><table class="tbl"><thead><tr><th>${t('dc.t.c.name')}</th>${THK.map((k) => `<th class="c" title="${esc(thName(k))}" style="font-size:11px">${esc(thShort(k))}</th>`).join('')}</tr></thead>
+      <tbody>${R.map((p) => `<tr><td style="white-space:nowrap">${esc(nm(p.s))} <span class="small muted">${esc(deptShort(p.s.bo_mon))}</span></td>${THK.map((k) => cell(p, k)).join('')}</tr>`).join('')}</tbody></table></div>
+      <p class="small muted" style="margin:6px 0 0">${THK.map((k) => `<b>${esc(thShort(k))}</b> ${esc(thName(k))}`).join(' · ')}</p>`;
+    const sorted = tst.sort === 'all' ? R : R.slice().sort((a, b) => b.th[tst.sort] - a.th[tst.sort] || b.score - a.score);
+    const rank = App.ui.table([
+      { t: '#', f: (p, i) => i + 1, cls: 'c' },
+      { t: t('dc.t.c.name'), f: (p) => `${esc(nm(p.s))}<div class="small muted">${esc(deptShort(p.s.bo_mon))} · ${esc(p.s.vi_tri)} · ${esc([p.s.hoc_ham, p.s.hoc_vi].filter(Boolean).join('.'))}</div>` },
+      { t: t('dc.t.c.score'), f: (p) => `<b>${p.score}</b>${App.ui.progress(p.score, p.score >= 60 ? 'ok' : 'cyan')}` },
+      { t: t('dc.t.c.top'), f: (p) => chips(p.top) },
+      { t: t('dc.t.c.pub'), f: (p) => `${p.pub3}<div class="small muted">${t('dc.t.pubsub', { q: p.q12 })}</div>`, cls: 'num' },
+      { t: t('dc.t.c.pi'), f: (p) => `${p.pi}<div class="small muted">${t('dc.t.pisub', { a: p.act })}</div>`, cls: 'num' },
+      { t: t('dc.t.c.rs'), f: (p) => (p.rsPct == null ? '–' : App.ui.badge(pctTxt(p.rsPct), p.rsPct >= 100 ? 'ok' : p.rsPct >= 50 ? 'warn' : 'bad')), cls: 'c' },
+      { t: t('dc.t.c.ready'), f: readyBadge, cls: 'c' },
+    ], sorted, { empty: t('dc.none') });
+    const capN = R.filter((p) => p.ready !== 'bad').length;
+    // khuyến nghị
+    const recs = [];
+    const strong = THK.map((k) => ({ k, n: R.filter((p) => p.th[k] >= 2).length })).sort((a, b) => a.n - b.n)[0];
+    if (strong) recs.push(t('dc.t.r1', { l: thName(strong.k), n: strong.n }));
+    const busy = R.filter((p) => p.score >= 50 && p.ready === 'bad');
+    if (busy.length) recs.push(t('dc.t.r2', { n: busy.length, l: busy.slice(0, 3).map((p) => nm(p.s) + ' ' + pctTxt(p.tPct)).join(', ') }));
+    const bestCall = CALLS.map((c) => ({ c, T: buildTeam(P, c) })).filter((x) => x.T).sort((a, b) => b.T.score - a.T.score)[0];
+    if (bestCall) recs.push(t('dc.t.r3', { c: App.L(bestCall.c, 'ten'), s: bestCall.T.score, k: bestCall.T.covered.length, m: bestCall.c.th.length }));
+    const nopub = R.filter((p) => p.pub3 === 0);
+    if (nopub.length) recs.push(t('dc.t.r4', { n: nopub.length, l: nopub.slice(0, 4).map((p) => nm(p.s)).join(', ') }));
+
+    body.innerHTML = `<div class="kpis">${App.ui.kpi(t('dc.t.k.n'), R.length, '')}${App.ui.kpi(t('dc.t.k.q12'), sum(R, (p) => p.q12), '', 'cyan')}
+        ${App.ui.kpi(t('dc.t.k.pi'), sum(R, (p) => p.act), '')}${App.ui.kpi(t('dc.t.k.cap'), capN + '/' + R.length, t('dc.t.k.capsub'), 'ok')}</div>
+      <div class="card"><h3>${t('dc.t.map')}</h3>${heat}<p class="small muted" style="margin:4px 0 0">${t('dc.t.map.note')}</p></div>
+      <div class="card"><div class="row between"><h3 style="margin:0">${t('dc.t.rank')}</h3>
+        <label class="small">${t('dc.t.sortby')}: <select data-sort><option value="all">${t('dc.t.sort.all')}</option>${THK.map((k) => `<option value="${k}" ${tst.sort === k ? 'selected' : ''}>${esc(thName(k))}</option>`).join('')}</select></label></div>
+        ${rank}<p class="small muted" style="margin:6px 0 0">${t('dc.t.formula')}</p></div>
+      <div class="card"><h3>${t('dc.t.build')}</h3>
+        <div class="row" style="flex-wrap:wrap;gap:6px">${CALLS.map((c) => `<button class="btn sm ${tst.call === c.k ? '' : 'ghost'}" data-call="${c.k}">${esc(App.L(c, 'ten'))}</button>`).join('')}
+          <button class="btn sm ${tst.call === 'custom' ? 'cyan' : 'ghost'}" data-call="custom">${t('dc.t.custom')}</button></div>
+        <p class="small muted" style="margin:6px 0 0">${t('dc.t.callnote')}</p>
+        <div data-team style="margin-top:10px"></div></div>
+      ${recCard(recs)}`;
+    const sel = body.querySelector('[data-sort]'); sel.value = tst.sort; sel.onchange = () => { tst.sort = sel.value; viewTeam(body); };
+    body.querySelectorAll('[data-call]').forEach((x) => (x.onclick = () => { tst.call = x.dataset.call; body.querySelectorAll('[data-call]').forEach((y) => y.className = 'btn sm ' + (y === x ? (y.dataset.call === 'custom' ? 'cyan' : '') : 'ghost')); renderTeam(body.querySelector('[data-team]'), P); }));
+    renderTeam(body.querySelector('[data-team]'), P);
+  }
+
+  function renderTeam(el, P) {
+    const custom = tst.call === 'custom';
+    const cfg = custom ? { k: 'custom', ten_vi: 'Đề tài nhóm – chủ đề tự chọn', ten_en: 'Group project – custom themes', cap: 'Cấp cơ sở (Trường)', th: tst.custom.slice(), budget: 0, size: 5, minQ: 1, maxAct: 1, inter: tst.mix, dl: '' }
+      : CALLS.find((c) => c.k === tst.call) || CALLS[0];
+    const pick = custom ? `<div class="card" style="background:#F7F9FC;margin:0 0 10px"><b class="small">${t('dc.t.pick')}</b>
+        <div class="row" style="flex-wrap:wrap;gap:4px 12px;margin-top:6px">${THK.map((k) => `<label class="small"><input type="checkbox" data-th="${k}" ${tst.custom.includes(k) ? 'checked' : ''}> ${esc(thName(k))}</label>`).join('')}</div>
+        <label class="small" style="display:block;margin-top:6px"><input type="checkbox" data-mix ${tst.mix ? 'checked' : ''}> ${t('dc.t.mix')}</label></div>` : '';
+    const bindPick = () => {
+      el.querySelectorAll('[data-th]').forEach((x) => (x.onchange = () => { const k = x.dataset.th; tst.custom = x.checked ? tst.custom.concat(k) : tst.custom.filter((y) => y !== k); renderTeam(el, P); }));
+      const mx = el.querySelector('[data-mix]'); if (mx) mx.onchange = () => { tst.mix = mx.checked; renderTeam(el, P); };
+    };
+    if (!cfg.th.length) { el.innerHTML = pick + App.ui.empty(t('dc.t.needth')); bindPick(); return; }
+    const T = buildTeam(P, cfg);
+    if (!T) { el.innerHTML = pick + App.ui.empty(t('dc.none')); bindPick(); return; }
+    const ck = (b) => (b ? '<b style="color:#2F855A">✓</b>' : '<b style="color:#C53030">✗</b>');
+    const days = cfg.dl ? Math.round((new Date(cfg.dl) - App.today) / 864e5) : null;
+    const eligRows = [[T.elig.ts, t('dc.t.e.ts')], [T.elig.q, t('dc.t.e.q', { n: cfg.minQ })], [T.elig.act, t('dc.t.e.act', { n: cfg.maxAct })]];
+    if (cfg.inter) eligRows.push([T.deptsN >= 2, t('dc.t.e.inter')]);
+    const info = `<div class="fields" style="grid-template-columns:auto 1fr">
+        <div class="k">${t('dc.t.req')}</div><div class="v">${chips(cfg.th)} ${cfg.inter ? App.ui.badge(t('dc.t.interb'), 'navy') : ''}</div>
+        ${cfg.budget ? `<div class="k">${t('dc.t.budget')}</div><div class="v">${t('dc.t.mil', { n: App.fmtNum(cfg.budget, 0) })}${App.lang === 'vi' ? ' · ' + esc(cfg.cap) : ''}</div>` : ''}
+        <div class="k">${t('dc.t.size')}</div><div class="v">${t('dc.t.ppl', { n: cfg.size })}</div>
+        ${cfg.dl ? `<div class="k">${t('dc.t.dl')}</div><div class="v">${App.fmtDate(cfg.dl)} ${App.ui.badge(t('dc.t.days', { n: days }), days < 45 ? 'warn' : 'info')}</div>` : ''}
+        <div class="k">${t('dc.t.elig')}</div><div class="v">${eligRows.map(([b, l]) => `<div class="small">${ck(b)} ${esc(l)}</div>`).join('')}</div></div>`;
+    const why = (m) => {
+      const p = m.p, out = [];
+      const strongK = cfg.th.filter((k) => p.th[k] >= 1);
+      if (strongK.length) out.push(t('dc.t.why.th', { l: strongK.map(thName).join(', ') }));
+      if (m.role === 'm' && m.gap.length) out.push(t('dc.t.why.gap', { l: m.gap.map(thName).join(', ') }));
+      if (p.q12) out.push(t('dc.t.why.q', { n: p.q12 }));
+      if (m.role === 'pi') { if (p.s.hoc_vi === 'TS') out.push(t('dc.t.why.ts')); if (p.act) out.push(t('dc.t.why.pi', { n: p.act })); }
+      if (p.done) out.push(t('dc.t.why.done', { n: p.done }));
+      if (m.role === 'y') out.push(t('dc.t.why.young', { d: [p.s.vi_tri, p.s.hoc_vi].join(', ') }));
+      if (cfg.inter && m.role !== 'pi' && p.s.bo_mon !== T.pi.s.bo_mon) out.push(t('dc.t.why.dept'));
+      out.push(t(p.ready === 'bad' ? 'dc.t.why.busy' : 'dc.t.why.ready', { p: pctTxt(p.tPct) }));
+      return out.slice(0, 4);
+    };
+    const roleB = (r) => App.ui.badge(t('dc.t.role.' + r), r === 'pi' ? 'navy' : r === 'm' ? 'info' : 'orange');
+    const members = T.team.map((m) => `<div class="card" style="margin:0;border-top:3px solid ${m.role === 'pi' ? '#2E3191' : m.role === 'm' ? '#1C9ACC' : '#DD6B20'}">
+        <div class="row between"><div class="row"><img src="${esc(App.photo(m.p.s))}" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover"><div><b>${esc(nm(m.p.s))}</b><div class="small muted">${esc(deptShort(m.p.s.bo_mon))} · ${esc(m.p.s.vi_tri)} · ${t('dc.t.c.score')} ${m.p.score}</div></div></div>${roleB(m.role)}</div>
+        <ul class="small" style="margin:6px 0 0;padding-left:16px">${why(m).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+        <div style="margin-top:4px">${readyBadge(m.p)}</div></div>`).join('');
+    const covTbl = `<table class="tbl"><tbody>${cfg.th.map((k) => { const best = T.team.slice().sort((a, b) => b.p.th[k] - a.p.th[k])[0]; const ok = T.cov[k] >= 1;
+      return `<tr><td>${ck(ok)}</td><td class="small">${esc(thName(k))}</td><td class="small muted">${ok && best ? esc(nm(best.p.s)) : '–'}</td></tr>`; }).join('')}</tbody></table>`;
+    const alts = T.alts.length ? `<ul class="small" style="margin:0;padding-left:16px">${T.alts.map((a) => `<li><b>${esc(nm(a.c.s))}</b> (${esc(deptShort(a.c.s.bo_mon))}) – ${t('dc.t.fit')} ${pctS(a.f * 100)} · ${chips(a.c.top.filter((k) => cfg.th.includes(k)))}${a.for ? ` <span class="muted">${t('dc.t.alt.for')} ${esc(nm(a.for))}</span>` : ''}</li>`).join('')}</ul>` : `<span class="small muted">${t('dc.none')}</span>`;
+    el.innerHTML = `${pick}<div class="grid g-1-2"><div>${info}</div>
+      <div><div class="kpis" style="margin:0 0 8px">${App.ui.kpi(t('dc.t.tscore'), T.score, App.ui.progress(T.score, T.score >= 70 ? 'ok' : 'cyan'), T.score >= 70 ? 'ok' : 'cyan')}
+        ${App.ui.kpi(t('dc.t.cov'), T.covered.length + '/' + cfg.th.length, '', T.covered.length === cfg.th.length ? 'ok' : 'warn')}</div>${covTbl}</div></div>
+      ${T.piOk ? '' : note(t('dc.t.noelig'), 'warn')}
+      <h4 style="margin:12px 0 6px">${t('dc.t.team')}</h4><div class="grid g3">${members}</div>
+      <h4 style="margin:12px 0 6px">${t('dc.t.alt')}</h4>${alts}
+      <div class="row" style="margin-top:12px"><button class="btn" data-tsend>${t('dc.t.send')}</button><button class="btn cyan" data-tcreate>${t('dc.t.create')}</button></div>`;
+    bindPick();
+    const title = App.L(cfg, 'ten');
+    el.querySelector('[data-tsend]').onclick = (ev) => {
+      T.team.forEach((m) => App.notify(m.p.s.ma_cb, 'Đề xuất tham gia nhóm đề tài "' + cfg.ten_vi + '" – vai trò: ' + t('dc.t.role.' + m.role), '#/decision/team'));
+      App.audit('DE_XUAT', 'Đề xuất nhóm nghiên cứu cho "' + cfg.ten_vi + '": ' + T.team.map((m) => m.p.s.ma_cb + '(' + m.role + ')').join(', '), T.pi.s.ma_cb, 'Quản lý khoa học công nghệ');
+      App.ui.toast(t('dc.t.sent', { n: T.team.length }), 'ok'); ev.target.disabled = true;
+    };
+    el.querySelector('[data-tcreate]').onclick = async () => {
+      if (!App.proc || typeof App.proc.create !== 'function') { App.ui.toast(t('dc.t.noproc'), 'bad'); return; }
+      const pi = T.pi.s;
+      const data = { staff_id: pi.ma_cb, full_name: pi.ho_ten, unit: pi.bo_mon, degree: [pi.hoc_ham, pi.hoc_vi].filter(Boolean).join('.'), project_level: cfg.cap, title: cfg.ten_vi,
+        field: cfg.th.map((k) => App.t('dc.t.th.' + k)).join('; '), members: T.team.filter((m) => m.role !== 'pi').map((m) => m.p.s.ma_cb).join(', '),
+        active_projects: D.projects.filter((p) => p.ma_cb === pi.ma_cb && p.vai_tro === 'Chủ nhiệm' && p.trang_thai !== 'Đã nghiệm thu').map((p) => p.id + ' – ' + p.ten).join('; ') || 'Không',
+        budget: (cfg.budget || 0) * 1e6 };
+      try {
+        const r = await Promise.resolve(App.proc.create('QT-ĐHQT-KH-01', data, { draft: true, nguon: 'decision/team', hien_thi: title }));
+        App.audit('TAO_NHAP', 'Tạo hồ sơ đăng ký đề tài từ đề xuất nhóm: ' + cfg.ten_vi, r && r.id, 'Quản lý khoa học công nghệ');
+        App.ui.toast(t('dc.t.created', { id: r && r.id }), 'ok');
+        if (r && r.id) location.hash = '#/processes/hs/' + r.id;
+      } catch (e) { console.error(e); App.ui.toast(String(e.message || e), 'bad'); }
+    };
+  }
+
+  const RENDER = { bal: viewBal, fc: viewFc, sv: viewSv, sla: viewSla, rs: viewRs, lab: viewLab, team: viewTeam };
 
   App.page('decision', {
     render(main, params) {

@@ -2,16 +2,17 @@
    khai báo công bố, đề nghị hỗ trợ (QT-ĐHQT-KH-02), đồng bộ SCIMAN giả lập; bảng quản lý BM/Khoa/P.QLKH. */
 App.addI18n({
   vi: {
-    'rs.sub': 'Giờ NCKH quy đổi theo QĐ 1155/QĐ-ĐHQT (hiệu lực 01/09/2025): công bố theo nhóm P1–P8 × hệ số tác giả, đề tài theo bậc kinh phí.',
+    'rs.sub': 'Giờ nghiên cứu khoa học, công bố và đề tài của bạn trong năm học.',
+    'rs.detail': 'Chi tiết cách tính', 'rs.d.norm': 'Định mức', 'rs.d.pap': 'Quy đổi công bố', 'rs.d.proj': 'Quy đổi đề tài', 'rs.d.hist': 'Qua các năm', 'rs.c.year': 'Năm',
     'rs.year': 'Năm học', 'rs.tab.me': 'Cá nhân', 'rs.tab.dept': 'Bộ môn', 'rs.tab.fac': 'Toàn Khoa', 'rs.tab.school': 'Toàn Trường',
-    'rs.k.total': 'Giờ NCKH được tính', 'rs.k.norm': 'Định mức NCKH', 'rs.k.pct': 'Mức hoàn thành', 'rs.k.papers': 'Công bố trong năm', 'rs.k.sup': 'Hỗ trợ dự kiến',
+    'rs.k.total': 'Giờ NCKH', 'rs.k.norm': 'Định mức NCKH', 'rs.k.pct': 'Hoàn thành', 'rs.k.papers': 'Số công bố', 'rs.k.sup': 'Hỗ trợ dự kiến',
     'rs.k.pend': '+{h} giờ chờ xác minh', 'rs.k.q12': '{n} bài Q1/Q2',
-    'rs.ids': 'Định danh nhà khoa học', 'rs.ids.none': 'Chưa có – cập nhật trong Hồ sơ số', 'rs.ids.edit': 'Cập nhật ở Hồ sơ số',
+    'rs.ids': 'Mã định danh', 'rs.ids.none': 'Chưa có – cập nhật trong Hồ sơ số', 'rs.ids.edit': 'Cập nhật ở Hồ sơ số',
     'rs.new': 'Khai báo công bố mới', 'rs.sync': 'Đồng bộ SCIMAN (giả lập)', 'rs.synced': 'Đồng bộ SCIMAN lúc {d}',
     'rs.sync.ok': 'Đã đồng bộ SCIMAN: {n} công bố khớp DOI, {v} khai báo được xác minh.',
     'rs.papers': 'Công bố khoa học', 'rs.c.title': 'Công trình', 'rs.c.type': 'Loại', 'rs.c.q': 'Xếp hạng', 'rs.c.grp': 'Nhóm quy đổi', 'rs.c.role': 'Vai trò',
     'rs.c.share': 'Hệ số tác giả', 'rs.c.hours': 'Giờ NCKH', 'rs.c.sup': 'Hỗ trợ dự kiến', 'rs.c.req': 'Đề nghị hỗ trợ', 'rs.c.st': 'Trạng thái',
-    'rs.t.journal': 'Tạp chí', 'rs.t.conf': 'Hội nghị', 'rs.req.btn': 'Đề nghị hỗ trợ', 'rs.pending': 'Chờ xác minh – chưa tính giờ',
+    'rs.t.journal': 'Tạp chí', 'rs.t.conf': 'Hội nghị', 'rs.req.btn': 'Đề nghị hỗ trợ', 'rs.pending': 'Chờ xác minh',
     'rs.share.main': '1/3 + (2/3)/N', 'rs.share.co': '(2/3)/N', 'rs.N': 'N = {n} tác giả',
     'rs.share.note': 'Hệ số tác giả: tác giả chính duy nhất = 1/3 + (2/3)/N; đồng tác giả = (2/3)/N (N = tổng số tác giả).',
     'rs.N.assume': 'Giả định: N = người khai báo + đồng tác giả IU + 1 tác giả ngoài Trường (sẽ lấy chính xác từ Crossref/Scopus khi tích hợp).',
@@ -34,24 +35,25 @@ App.addI18n({
     'rs.r.need': 'Vui lòng xác nhận cam kết.', 'rs.r.ok': 'Đã gửi đề nghị hỗ trợ (QT-ĐHQT-KH-02).', 'rs.r.normwarn': 'Lưu ý: bạn chưa hoàn thành định mức NCKH năm học – hồ sơ có thể bị gắn cờ khi xét.',
     'rs.r.amount': 'Mức hỗ trợ dự kiến',
     'rs.m.h': 'NCKH – {s}', 'rs.m.n': 'Cán bộ', 'rs.m.met': 'Đạt định mức', 'rs.m.q12': 'Bài Q1/Q2', 'rs.m.late': 'Đề tài trễ hạn',
-    'rs.m.chart': 'Giờ NCKH so với định mức (vạch đỏ = định mức)', 'rs.m.quart': 'Công bố theo xếp hạng và năm học', 'rs.m.other': 'Khác',
+    'rs.m.chart': 'Giờ NCKH so với định mức', 'rs.m.quart': 'Công bố theo xếp hạng và năm học', 'rs.m.other': 'Khác',
     'rs.m.conf': 'Hội nghị', 'rs.m.proj': 'Đề tài theo cấp và trạng thái', 'rs.m.lateh': 'Đề tài trễ hạn / quá hạn kết thúc', 'rs.m.pi': 'Chủ nhiệm / thành viên',
     'rs.m.end': 'Kết thúc', 'rs.m.days': 'Quá hạn (ngày)', 'rs.m.csv': 'Xuất bảng NCKH đơn vị (dữ liệu cá nhân)', 'rs.m.exported': 'Đã xuất CSV và ghi nhật ký.',
-    'rs.m.npap': 'Số bài', 'rs.m.nproj': 'Đề tài', 'rs.m.dept': 'Bộ môn', 'rs.m.none': 'Không có đề tài trễ hạn.', 'rs.m.click': 'Bấm vào một dòng để xem danh mục công bố (ghi nhật ký).',
+    'rs.m.npap': 'Số bài', 'rs.m.nproj': 'Đề tài', 'rs.m.dept': 'Bộ môn', 'rs.m.none': 'Không có đề tài trễ hạn.', 'rs.m.click': 'Bấm vào dòng để xem chi tiết.',
     'rs.m.detail': 'Công bố và đề tài – {n}', 'rs.noperson': 'Vai trò này không có khối lượng NCKH cá nhân.', 'rs.none': 'Chưa có công bố trong năm học này.',
     'rs.yes': 'Có', 'rs.no': 'Không', 'rs.hrs': 'giờ NCKH', 'rs.hist': 'Giờ NCKH qua các năm học (vạch đỏ = định mức)', 'rs.hist.p': 'Công bố của tôi theo xếp hạng',
   },
   en: {
-    'rs.sub': 'Research hours per Decision 1155/QĐ-ĐHQT (effective 01/09/2025): publications by group P1–P8 × author share, projects by budget tier.',
+    'rs.sub': 'Your research hours, publications and projects this academic year.',
+    'rs.detail': 'How it is calculated', 'rs.d.norm': 'Quota', 'rs.d.pap': 'Publication hours', 'rs.d.proj': 'Project hours', 'rs.d.hist': 'By year', 'rs.c.year': 'Year',
     'rs.year': 'Academic year', 'rs.tab.me': 'Personal', 'rs.tab.dept': 'Department', 'rs.tab.fac': 'Whole faculty', 'rs.tab.school': 'Whole university',
-    'rs.k.total': 'Research hours counted', 'rs.k.norm': 'Research quota', 'rs.k.pct': 'Completion', 'rs.k.papers': 'Publications this year', 'rs.k.sup': 'Estimated support',
+    'rs.k.total': 'Research hours', 'rs.k.norm': 'Research quota', 'rs.k.pct': 'Completed', 'rs.k.papers': 'Publications', 'rs.k.sup': 'Estimated support',
     'rs.k.pend': '+{h} hours pending verification', 'rs.k.q12': '{n} Q1/Q2 papers',
     'rs.ids': 'Researcher identifiers', 'rs.ids.none': 'Not set – update it in the e-Profile', 'rs.ids.edit': 'Update in e-Profile',
     'rs.new': 'Declare a new publication', 'rs.sync': 'Sync with SCIMAN (simulated)', 'rs.synced': 'Synced with SCIMAN at {d}',
     'rs.sync.ok': 'SCIMAN sync done: {n} publications matched by DOI, {v} declarations verified.',
     'rs.papers': 'Publications', 'rs.c.title': 'Output', 'rs.c.type': 'Type', 'rs.c.q': 'Rank', 'rs.c.grp': 'Group', 'rs.c.role': 'Role',
     'rs.c.share': 'Author share', 'rs.c.hours': 'Research hrs', 'rs.c.sup': 'Est. support', 'rs.c.req': 'Support request', 'rs.c.st': 'Status',
-    'rs.t.journal': 'Journal', 'rs.t.conf': 'Conference', 'rs.req.btn': 'Request support', 'rs.pending': 'Pending verification – not counted',
+    'rs.t.journal': 'Journal', 'rs.t.conf': 'Conference', 'rs.req.btn': 'Request support', 'rs.pending': 'Pending verification',
     'rs.share.main': '1/3 + (2/3)/N', 'rs.share.co': '(2/3)/N', 'rs.N': 'N = {n} authors',
     'rs.share.note': 'Author share: sole main author = 1/3 + (2/3)/N; co-author = (2/3)/N (N = total number of authors).',
     'rs.N.assume': 'Assumption: N = declarant + IU co-authors + 1 external author (to be taken from Crossref/Scopus once integrated).',
@@ -74,10 +76,10 @@ App.addI18n({
     'rs.r.need': 'Please confirm the declaration.', 'rs.r.ok': 'Support request submitted (QT-ĐHQT-KH-02).', 'rs.r.normwarn': 'Note: your research quota for the year is not met yet – the request may be flagged.',
     'rs.r.amount': 'Estimated support',
     'rs.m.h': 'Research – {s}', 'rs.m.n': 'Staff', 'rs.m.met': 'Quota met', 'rs.m.q12': 'Q1/Q2 papers', 'rs.m.late': 'Late projects',
-    'rs.m.chart': 'Research hours vs quota (red mark = quota)', 'rs.m.quart': 'Publications by rank and academic year', 'rs.m.other': 'Other',
+    'rs.m.chart': 'Research hours vs quota', 'rs.m.quart': 'Publications by rank and academic year', 'rs.m.other': 'Other',
     'rs.m.conf': 'Conference', 'rs.m.proj': 'Projects by level and status', 'rs.m.lateh': 'Late / overdue projects', 'rs.m.pi': 'PI / member',
     'rs.m.end': 'End date', 'rs.m.days': 'Overdue (days)', 'rs.m.csv': 'Export unit research table (personal data)', 'rs.m.exported': 'CSV exported and logged.',
-    'rs.m.npap': 'Papers', 'rs.m.nproj': 'Projects', 'rs.m.dept': 'Department', 'rs.m.none': 'No late projects.', 'rs.m.click': 'Click a row to see the publication list (logged).',
+    'rs.m.npap': 'Papers', 'rs.m.nproj': 'Projects', 'rs.m.dept': 'Department', 'rs.m.none': 'No late projects.', 'rs.m.click': 'Click a row for details.',
     'rs.m.detail': 'Publications and projects – {n}', 'rs.noperson': 'This role has no personal research workload.', 'rs.none': 'No publications in this academic year.',
     'rs.yes': 'Yes', 'rs.no': 'No', 'rs.hrs': 'research hours', 'rs.hist': 'Research hours by academic year (red mark = quota)', 'rs.hist.p': 'My publications by rank',
   },
@@ -171,59 +173,78 @@ App.addI18n({
     show(S.tab);
   }
 
-  /* --- cá nhân --- */
+  /* --- cá nhân (gọn: số liệu chính + danh sách; chi tiết quy đổi trong cửa sổ "Chi tiết cách tính") --- */
+  const projBadge = (p) => App.ui.badge(VL(p.trang_thai), p.trang_thai === 'Đã nghiệm thu' ? 'ok' : p.trang_thai === 'Trễ hạn' ? 'bad' : p.trang_thai === 'Chờ nghiệm thu' ? 'warn' : 'info');
+  function myProjects(u, P) { return D.projects.filter((p) => p.ma_cb === u.ma_cb).map((p) => Object.assign({}, p, C.projectHours(p), { inYear: P.y.projects.some((x) => x.id === p.id) })); }
   function personal(el, u, rerender) {
     const P = personTotals(u.ma_cb, S.year);
-    const n = C.norm(u);
     const pk = P.pct >= 100 ? 'ok' : P.pct >= 60 ? 'warn' : 'bad';
     const q12 = P.ps.filter((p) => ['Q1', 'Q2'].includes(p.xep_hang)).length;
     const supSum = P.ps.reduce((a, b) => a + b.est, 0);
     const sync = (App.store.get()['rs.sync'] || {})[u.ma_cb];
-    const projects = D.projects.filter((p) => p.ma_cb === u.ma_cb).map((p) => Object.assign({}, p, C.projectHours(p), { inYear: P.y.projects.some((x) => x.id === p.id) }));
-    el.innerHTML = `<div class="kpis">${App.ui.kpi(t('rs.k.total'), n1(P.total), P.pend ? t('rs.k.pend', { h: n1(P.pend) }) : '')}
-        ${App.ui.kpi(t('rs.k.norm'), n1(P.norm), esc(n.code), 'cyan')}
+    const projects = myProjects(u, P);
+    el.innerHTML = `<div class="kpis">${App.ui.kpi(t('rs.k.total'), n1(P.total), P.pend ? t('rs.k.pend', { h: n1(P.pend) }) : t('rs.hrs'))}
+        ${App.ui.kpi(t('rs.k.norm'), n1(P.norm), t('rs.hrs'), 'cyan')}
         ${App.ui.kpi(t('rs.k.pct'), App.fmtNum(P.pct, 0) + '%', App.ui.progress(P.pct, pk), pk)}
         ${App.ui.kpi(t('rs.k.papers'), P.ps.length, t('rs.k.q12', { n: q12 }))}
-        ${App.ui.kpi(t('rs.k.sup'), App.fmtNum(supSum / 1e6, 1) + (App.lang === 'vi' ? ' tr.đ' : ' M VND'), 'QĐ 1155', 'warn')}</div>
-      <div class="grid g2"><div class="card"><div class="card-h"><h3>${t('rs.ids')}</h3><div class="row">
-        <button class="btn sm" data-new>${t('rs.new')}</button><button class="btn ghost sm" data-sync>${t('rs.sync')}</button></div></div>
-        <div class="row"><span class="chip">ORCID: <b>${esc(u.orcid || t('rs.ids.none'))}</b></span><span class="chip">Scopus Author ID: <b>${esc(u.scopus_id || t('rs.ids.none'))}</b></span>
-        ${App.acl.has('eprofile') ? `<a class="linkbtn small" href="#/profile">${t('rs.ids.edit')}</a>` : ''}${sync ? `<span class="muted small">${t('rs.synced', { d: App.fmtDT(sync) })}</span>` : ''}</div>
-        <h4 style="margin:16px 0 8px">${t('rs.hist')}</h4>${App.ui.chart.hbars(YEARS.map((y) => { const q = personTotals(u.ma_cb, y); return { l: yl(y), v: q.total, ref: q.norm, txt: n1(q.total) + ' / ' + n1(q.norm), c: q.pct >= 100 ? '#2F855A' : '#1C9ACC' }; }))}
-        <h4 style="margin:16px 0 8px">${t('rs.hist.p')}</h4>${App.ui.table([{ t: t('rs.year'), f: (y) => yl(y) }].concat(['Q1', 'Q2', 'Q3', 'Q4'].map((q) => ({ t: q, f: (y) => D.papers.filter((p) => p.ma_cb === u.ma_cb && p.nam_hoc === y && p.xep_hang === q).length, cls: 'num' })))
-          .concat([{ t: t('rs.m.conf'), f: (y) => D.papers.filter((p) => p.ma_cb === u.ma_cb && p.nam_hoc === y && p.loai === 'conf').length, cls: 'num' }]), YEARS)}</div>${normCard(u, n, P)}</div>
-      <div>
-        <div class="card"><div class="card-h"><h3>${t('rs.papers')} – ${esc(yl(S.year))}</h3>${App.ui.cls('NB')}</div>
-          ${P.ps.length ? App.ui.table([
-            { t: t('rs.c.title'), f: (p) => `<div style="min-width:260px"><b>${esc(p.ten)}</b><div class="small muted">${esc(p.tap_chi)} · ${esc(p.nam || '')} · DOI ${esc(p.doi)}</div>
-              ${(p.dong_tac_gia || []).length ? `<div class="small">${(p.dong_tac_gia || []).map((c) => esc(App.name(App.staff(c) || { ma_cb: c, ho_ten: c }))).join(', ')}</div>` : ''}${p.pending ? App.ui.badge(t('rs.pending'), 'warn') : ''}</div>` },
-            { t: t('rs.c.type'), f: (p) => App.ui.badge(t('rs.t.' + p.loai), p.loai === 'conf' ? 'info' : 'navy') + `<div class="small muted">${esc(p.chi_muc || '')}</div>` },
-            { t: t('rs.c.q'), f: (p) => esc(p.xep_hang || '–'), cls: 'c' },
-            { t: t('rs.c.grp'), f: (p) => `<b>${esc(p.conv.group || '–')}</b><div class="small muted">${App.fmtNum(p.conv.hours || 0, 0)}</div>`, cls: 'c' },
-            { t: t('rs.c.role'), f: (p) => esc(VL(p.vai_tro)) },
-            { t: t('rs.c.share'), f: (p) => `${App.fmtNum(p.share, 3)}<div class="small muted">${p.vai_tro === 'Đồng tác giả' ? t('rs.share.co') : t('rs.share.main')}; ${t('rs.N', { n: p.N })}</div>`, cls: 'num' },
-            { t: t('rs.c.hours'), f: (p) => `<b>${n1(p.hours)}</b>`, cls: 'num' },
-            { t: t('rs.c.sup'), f: (p) => (p.est ? vnd(p.est) : '–'), cls: 'num' },
-            { t: t('rs.c.req'), f: (p) => (p.req === 'Chưa đề nghị' && p.est && !p.pending ? `<button class="btn cyan sm" data-req="${esc(p.id)}">${t('rs.req.btn')}</button>`
-              : App.ui.badge(VL(p.req || 'Không áp dụng'), p.req === 'Đã chi' ? 'ok' : p.req === 'Đang xử lý' ? 'warn' : '') + (p.reqId ? `<div class="small muted">${esc(p.reqId)}</div>` : '')) }], P.ps)
-            : App.ui.empty(t('rs.none'))}
-          <div class="small" style="margin-top:8px">${t('rs.share.note')}</div>${src((RS.author_share || {}).source, (RS.author_share || {}).status)}
-          <div class="small muted">${t('rs.N.assume')} ${stBadge('gia_dinh')}</div>
-          <div class="small" style="margin-top:6px">${t('rs.sup.note')}</div>${src((RS.support_rules || {}).source + '; Điều 11 Bảng 4 (k = 10.000.000 đ)', 'ban_hanh')}</div>
-        <div class="card"><div class="card-h"><h3>${t('rs.projects')}</h3></div>
-          ${App.ui.table([
-            { t: t('rs.p.name'), f: (p) => `<div style="min-width:220px"><b>${esc(p.ten)}</b><div class="small muted">${esc(p.id)}</div></div>` }, { t: t('rs.p.lvl'), f: (p) => esc(VL(p.cap)) },
-            { t: t('rs.p.role'), f: (p) => esc(VL(p.vai_tro)) }, { t: t('rs.p.period'), f: (p) => App.fmtDate(p.bat_dau) + ' – ' + App.fmtDate(p.ket_thuc) },
-            { t: t('rs.p.budget'), f: (p) => App.fmtNum(p.kinh_phi_trieu, 0), cls: 'num' }, { t: t('status'), f: (p) => App.ui.badge(VL(p.trang_thai), p.trang_thai === 'Đã nghiệm thu' ? 'ok' : p.trang_thai === 'Trễ hạn' ? 'bad' : p.trang_thai === 'Chờ nghiệm thu' ? 'warn' : 'info') },
-            { t: t('rs.p.full'), f: (p) => App.fmtNum(p.full, 0), cls: 'num' }, { t: t('rs.p.share'), f: (p) => Math.round(p.share * 100) + '% ' + stBadge('gia_dinh'), cls: 'num' },
-            { t: t('rs.p.hours'), f: (p) => `<b>${App.fmtNum(p.hours, 0)}</b>`, cls: 'num' },
-            { t: t('rs.p.count'), f: (p) => App.ui.badge(p.inYear && p.counted ? t('rs.yes') : t('rs.no'), p.inYear && p.counted ? 'ok' : '') }], projects)}
-          <div class="small" style="margin-top:8px">${t('rs.p.note')}</div>${src((RS.projects || {}).source, (RS.projects || {}).status)}
-          <div class="small muted">${t('rs.p.assume')} ${stBadge('gia_dinh')}</div></div>
-      </div>`;
+        ${App.ui.kpi(t('rs.k.sup'), App.fmtNum(supSum / 1e6, 1) + (App.lang === 'vi' ? ' tr.đ' : ' M VND'), '', 'warn')}</div>
+      <div class="card"><div class="row between">
+        <div class="row"><span class="chip">ORCID: <b>${esc(u.orcid || t('rs.ids.none'))}</b></span><span class="chip">Scopus: <b>${esc(u.scopus_id || t('rs.ids.none'))}</b></span>
+          ${App.acl.has('eprofile') ? `<a class="linkbtn small" href="#/profile">${t('rs.ids.edit')}</a>` : ''}</div>
+        <div class="row"><button class="btn sm" data-new>${t('rs.new')}</button><button class="btn ghost sm" data-sync>${t('rs.sync')}</button>
+          <button class="linkbtn small" data-detail>${t('rs.detail')}</button></div></div>
+        ${sync ? `<div class="muted small" style="margin-top:6px">${t('rs.synced', { d: App.fmtDT(sync) })}</div>` : ''}</div>
+      <div class="card"><div class="card-h"><h3>${t('rs.papers')} – ${esc(yl(S.year))}</h3></div>
+        ${P.ps.length ? App.ui.table([
+          { t: t('rs.c.title'), f: (p) => `<div style="min-width:240px"><b>${esc(p.ten)}</b><div class="small muted">${esc(p.tap_chi)}</div>${p.pending ? App.ui.badge(t('rs.pending'), 'warn') : ''}</div>` },
+          { t: t('rs.c.year'), f: (p) => esc(p.nam || ''), cls: 'c' },
+          { t: t('rs.c.q'), f: (p) => esc(p.xep_hang || (p.loai === 'conf' ? t('rs.t.conf') : '–')), cls: 'c' },
+          { t: t('rs.c.hours'), f: (p) => `<b>${n1(p.hours)}</b>`, cls: 'num' },
+          { t: t('rs.c.req'), f: (p) => (p.req === 'Chưa đề nghị' && p.est && !p.pending ? `<button class="btn cyan sm" data-req="${esc(p.id)}">${t('rs.req.btn')}</button>`
+            : p.req && p.req !== 'Không áp dụng' && p.req !== 'Chưa đề nghị' ? App.ui.badge(VL(p.req), p.req === 'Đã chi' ? 'ok' : p.req === 'Đang xử lý' ? 'warn' : '') : '<span class="muted">–</span>') }], P.ps)
+          : App.ui.empty(t('rs.none'))}</div>
+      <div class="card"><div class="card-h"><h3>${t('rs.projects')}</h3></div>
+        ${App.ui.table([
+          { t: t('rs.p.name'), f: (p) => `<b>${esc(p.ten)}</b>` }, { t: t('rs.p.lvl'), f: (p) => esc(VL(p.cap)) },
+          { t: t('rs.p.role'), f: (p) => esc(VL(p.vai_tro)) }, { t: t('status'), f: projBadge }], projects)}</div>`;
     el.querySelector('[data-new]').onclick = () => declare(u, rerender);
     el.querySelector('[data-sync]').onclick = () => syncSciman(u, rerender);
+    el.querySelector('[data-detail]').onclick = () => detailModal(u, P, projects);
     el.querySelectorAll('[data-req]').forEach((b) => (b.onclick = () => requestSupport(u, P, P.ps.find((p) => p.id === b.dataset.req), rerender)));
+  }
+
+  /* --- cửa sổ chi tiết: định mức, quy đổi công bố/đề tài (căn cứ, giả định), lịch sử --- */
+  function detailModal(u, P, projects) {
+    const n = C.norm(u);
+    const m = App.ui.modal(`<h3>${t('rs.detail')} – ${esc(yl(S.year))}</h3><div data-mt></div><div data-mb></div>`, true);
+    const mb = m.querySelector('[data-mb]');
+    const show = (k) => {
+      if (k === 'norm') mb.innerHTML = normCard(u, n, P);
+      else if (k === 'pap') mb.innerHTML = (P.ps.length ? App.ui.table([
+          { t: t('rs.c.title'), f: (p) => `<div style="min-width:200px"><b>${esc(p.ten)}</b><div class="small muted">${esc(p.tap_chi)} · DOI ${esc(p.doi)}</div></div>` },
+          { t: t('rs.c.type'), f: (p) => esc(t('rs.t.' + p.loai)) + `<div class="small muted">${esc(p.chi_muc || '')}</div>` },
+          { t: t('rs.c.grp'), f: (p) => `<b>${esc(p.conv.group || '–')}</b><div class="small muted">${App.fmtNum(p.conv.hours || 0, 0)}</div>`, cls: 'c' },
+          { t: t('rs.c.role'), f: (p) => esc(VL(p.vai_tro)) },
+          { t: t('rs.c.share'), f: (p) => `${App.fmtNum(p.share, 3)}<div class="small muted">${p.vai_tro === 'Đồng tác giả' ? t('rs.share.co') : t('rs.share.main')}; ${t('rs.N', { n: p.N })}</div>`, cls: 'num' },
+          { t: t('rs.c.hours'), f: (p) => `<b>${n1(p.hours)}</b>`, cls: 'num' },
+          { t: t('rs.c.sup'), f: (p) => (p.est ? vnd(p.est) : '–'), cls: 'num' }], P.ps) : App.ui.empty(t('rs.none'))) +
+        `<div class="small" style="margin-top:8px">${t('rs.share.note')}</div>${src((RS.author_share || {}).source, (RS.author_share || {}).status)}
+        <div class="small muted">${t('rs.N.assume')} ${stBadge('gia_dinh')}</div>
+        <div class="small" style="margin-top:6px">${t('rs.sup.note')}</div>${src((RS.support_rules || {}).source + '; Điều 11 Bảng 4 (k = 10.000.000 đ)', 'ban_hanh')}`;
+      else if (k === 'proj') mb.innerHTML = App.ui.table([
+          { t: t('rs.p.name'), f: (p) => `<b>${esc(p.ten)}</b><div class="small muted">${esc(p.id)}</div>` },
+          { t: t('rs.p.period'), f: (p) => App.fmtDate(p.bat_dau) + ' – ' + App.fmtDate(p.ket_thuc) },
+          { t: t('rs.p.budget'), f: (p) => App.fmtNum(p.kinh_phi_trieu, 0), cls: 'num' }, { t: t('rs.p.full'), f: (p) => App.fmtNum(p.full, 0), cls: 'num' },
+          { t: t('rs.p.share'), f: (p) => Math.round(p.share * 100) + '%', cls: 'num' }, { t: t('rs.p.hours'), f: (p) => `<b>${App.fmtNum(p.hours, 0)}</b>`, cls: 'num' },
+          { t: t('rs.p.count'), f: (p) => App.ui.badge(p.inYear && p.counted ? t('rs.yes') : t('rs.no'), p.inYear && p.counted ? 'ok' : '') }], projects) +
+        `<div class="small" style="margin-top:8px">${t('rs.p.note')}</div>${src((RS.projects || {}).source, (RS.projects || {}).status)}
+        <div class="small muted">${t('rs.p.assume')} ${stBadge('gia_dinh')}</div>`;
+      else mb.innerHTML = `<h4 style="margin:0 0 8px">${t('rs.hist')}</h4>${App.ui.chart.hbars(YEARS.map((y) => { const q = personTotals(u.ma_cb, y); return { l: yl(y), v: q.total, ref: q.norm, txt: n1(q.total) + ' / ' + n1(q.norm), c: q.pct >= 100 ? '#2F855A' : '#1C9ACC' }; }))}
+        <h4 style="margin:16px 0 8px">${t('rs.hist.p')}</h4>${App.ui.table([{ t: t('rs.year'), f: (y) => yl(y) }].concat(['Q1', 'Q2', 'Q3', 'Q4'].map((q) => ({ t: q, f: (y) => D.papers.filter((p) => p.ma_cb === u.ma_cb && p.nam_hoc === y && p.xep_hang === q).length, cls: 'num' })))
+          .concat([{ t: t('rs.m.conf'), f: (y) => D.papers.filter((p) => p.ma_cb === u.ma_cb && p.nam_hoc === y && p.loai === 'conf').length, cls: 'num' }]), YEARS)}`;
+    };
+    App.ui.tabs(m.querySelector('[data-mt]'), [{ k: 'norm', t: t('rs.d.norm') }, { k: 'pap', t: t('rs.d.pap') }, { k: 'proj', t: t('rs.d.proj') }, { k: 'hist', t: t('rs.d.hist') }], 'norm', show);
+    show('norm');
   }
 
   function normCard(u, n, P) {
@@ -241,14 +262,14 @@ App.addI18n({
         <div class="small muted">${t('rs.n.surplus', { h: n1(surplus), r: n1(Math.min(short, surplus * ratio)) })}</div>${src(tt.source, tt.status)}`;
     }
     const pct = P.pct;
-    return `<div class="card"><h3>${t('rs.norm')} ${esc(yl(S.year))}</h3><div class="fields" style="grid-template-columns:1fr">
+    return `<div class="fields" style="grid-template-columns:1fr">
       <div class="fld"><div class="k">${t('rs.n.title')}</div><div class="v">${esc(App.L(it, 'title') || it.title_vi || n.code)} <span class="chip">${esc(n.code)}</span></div></div>
       <div class="fld"><div class="k">${t('rs.k.norm')}</div><div class="v" style="font-size:1.15rem">${n1(P.norm)} ${t('rs.hrs')}</div>
         ${App.ui.progress(pct, pct >= 100 ? 'ok' : pct >= 60 ? 'warn' : 'bad')}<div class="small muted">${n1(P.total)} / ${n1(P.norm)} = ${App.fmtNum(pct, 0)}%</div>
         ${src(it.source || 'QD1155 Điều 6.3 Bảng 1', isNCV ? 'gia_dinh' : it.status)}</div>
       <div class="fld"><div class="k">${short > 0 ? t('rs.n.short', { h: n1(short) }) : t('rs.n.done')}</div>${sub || (short > 0 ? '' : `<div class="small">${t('rs.n.carry')}</div>${src(co.source, co.status)}<div class="small">${t('rs.n.offset')}</div>${src(off.source, off.status)}`)}</div>
       <div class="fld"><div class="k">${t('rs.n.min')}</div><div class="small">${t('rs.n.minv')}</div>${src(RS.minimum_output_source, 'ban_hanh')}</div>
-      <div class="fld"><div class="k">${t('rs.n.conv')}</div>${src(cv.source, cv.status)}</div></div></div>`;
+      <div class="fld"><div class="k">${t('rs.n.conv')}</div>${src(cv.source, cv.status)}</div></div>`;
   }
 
   /* --- khai báo công bố mới --- */
@@ -364,7 +385,7 @@ App.addI18n({
       <div class="card">${App.ui.table([
           { t: t('rs.m.n'), f: (r) => `<b>${esc(App.name(r.s, { title: true }))}</b>` }, { t: t('rs.m.dept'), f: (r) => esc(r.s.bo_mon) },
           { t: t('rs.m.npap'), f: (r) => r.P.ps.length, cls: 'num' }, { t: 'Q1/Q2', f: (r) => r.q12, cls: 'num' }, { t: t('rs.m.nproj'), f: (r) => r.npr, cls: 'num' },
-          { t: t('rs.c.hours'), f: (r) => `<b>${n1(r.P.total)}</b>`, cls: 'num' }, { t: t('rs.k.norm'), f: (r) => n1(r.P.norm) + (r.s.vi_tri === 'NCV' ? ' ' + stBadge('gia_dinh') : ''), cls: 'num' },
+          { t: t('rs.c.hours'), f: (r) => `<b>${n1(r.P.total)}</b>`, cls: 'num' }, { t: t('rs.k.norm'), f: (r) => n1(r.P.norm), cls: 'num' },
           { t: '%', f: (r) => App.ui.badge(App.fmtNum(r.P.pct, 0) + '%', r.P.pct >= 100 ? 'ok' : r.P.pct >= 60 ? 'warn' : 'bad'), cls: 'num' }], rows, { rowAttr: (r) => `class="click" data-id="${r.s.ma_cb}"` })}
         <div class="small muted" style="margin-top:6px">${t('rs.m.click')}</div></div>
       <div class="grid g2"><div class="card"><h3>${t('rs.m.quart')}</h3>
